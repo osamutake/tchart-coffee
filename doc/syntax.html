@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/andyferra/2554919/raw/10ce87fe71b23216e3075d5648b8b9e56f7758e1/github.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+	
+	
+	<title>tchart-coffee 文法</title>
+</head>
+<body>
+<h1>tchart-coffee 文法</h1><div id="toc"></div>
+
+<p><a href="index.html">tchart の説明へ戻る</a></p>
+
+<h2>チャート文法(概要)</h2>
+
+<h3># から始まる行はコメント行です</h3>
+
+<pre><code class="nohighlight"># This line will not appear in the chart
+clk    _~_~_~_~_~
+signal ___~~~~___
+</code></pre>
+
+<pre><code class="tchart2svg"># This line will not appear in the chart
+clk    _~_~_~_~_~
+signal ___~~~~___
+</code></pre>
+
+<h3>@ から始まる行で設定を変更できます</h3>
+
+<p>形式は次の通りです。</p>
+
+<pre><code class="nohighlight">@[設定値の名称][スペース][設定値]
+</code></pre>
+
+<p><a href="#1-3">設定可能な値としてどんな物があるかについてはこちらです。</a></p>
+
+<pre><code class="nohighlight">@signal_style stroke-linecap=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;green&quot; fill=&quot;none&quot;
+clk    _~_~_~_~_~
+signal ___~~~~___
+</code></pre>
+
+<pre><code class="tchart2svg">@signal_style stroke-linecap=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;green&quot; fill=&quot;none&quot;
+clk    _~_~_~_~_~
+signal ___~~~~___
+</code></pre>
+
+<h3>% から始まる行で自由な位置に文字列を追加できます</h3>
+
+<p>与えるパラメータは、次の通りです。</p>
+
+<pre><code class="nohighlight">%[x座標][スペース][y座標][スペース][文字列]
+</code></pre>
+
+<pre><code class="nohighlight">@margin 20
+%100 -7 test!
+clk    _~_~_~_~_~
+signal ___~~~~___
+</code></pre>
+
+<pre><code class="tchart2svg">@margin 20
+%100 -7 test!
+clk    _~_~_~_~_~
+signal ___~~~~___
+</code></pre>
+
+<h3>空行があれば１行分だけ空白が空きます</h3>
+
+<pre><code class="nohighlight">clk1   _~_~_~_~_~
+clk2   __~~__~~__
+signal ___~~_____
+</code></pre>
+
+<pre><code class="tchart2svg">clk1   _~_~_~_~_~
+clk2   __~~__~~__
+
+signal ___~~_____
+</code></pre>
+
+<h3>その他の文字から始まる行が信号定義になります</h3>
+
+<p>フォーマットは</p>
+
+<pre><code class="nohighlight">信号名 [空白] タイミング定義
+</code></pre>
+
+<p>の形です。</p>
+
+<h2>チャート文法(タイミング定義)</h2>
+
+<h3>_ と ~ で 0 と 1 を表します。</h3>
+
+<p>~~ が上に寄らず中央に来るフォントだとちょっと見にくいですね。。。</p>
+
+<h3>- がハイインピーダンス状態です。</h3>
+
+<pre><code class="nohighlight">clk    _~_~_~_~_~_~_~_~_~
+data   ___~~~~__~~____~~_
+enable ___~~~~~~~~~~_____
+output ---~~~~__~~__-----
+</code></pre>
+
+<pre><code class="tchart2svg">clk    _~_~_~_~_~_~_~_~_~
+data   ___~~~~__~~____~~_
+enable ___~~~~~~~~~~_____
+output ---~~~~__~~__-----
+</code></pre>
+
+<h3>バス信号や不定値を表すのに = を使えます。</h3>
+
+<h3>X で値の切り替えを表せます。</h3>
+
+<p>X は時間が進みます。イメージ的には X= のように働きます。</p>
+
+<pre><code class="nohighlight">clk  _~_~_~_~_~
+data =X=X=X=X=X
+</code></pre>
+
+<pre><code class="tchart2svg">clk  _~_~_~_~_~
+data =X=X=X=X=X
+</code></pre>
+
+<h3>信号定義に文字列を書き入れることができます。</h3>
+
+<p>文字列を書いても時間は進みません。</p>
+
+<pre><code class="nohighlight">clk    _~_~_~_~_~_~_~_~_~
+enable ___~~~~~~~~~~_____
+output ---=D0=X=D1X=D2X=D3X=D4-----
+</code></pre>
+
+<pre><code class="tchart2svg">clk    _~_~_~_~_~_~_~_~_~
+enable ___~~~~~~~~~~_____
+output ---=D0=X=D1X=D2X=D3X=D4-----
+</code></pre>
+
+<h3>文字列に特殊文字を含めたい場合には &quot; &quot; でくくります</h3>
+
+<h3>&quot; を含めたければ &quot;&quot; のように重ねます</h3>
+
+<p>スペースも入れられます</p>
+
+<pre><code class="nohighlight">&quot;=&quot;   -======&quot;A = B&quot;-
+&quot;     -======&quot; &quot;&quot;A&quot;&quot; = &quot;&quot;B&quot;&quot; &quot;-
+A     -======A-
+space -======&quot;A      &quot;-
+</code></pre>
+
+<pre><code class="tchart2svg">&quot;=&quot;   -======&quot;A = B&quot;-
+&quot;     -======&quot; &quot;&quot;A&quot;&quot; = &quot;&quot;B&quot;&quot; &quot;-
+A     -======A-
+space -======&quot;A      &quot;-
+</code></pre>
+
+<h3>右寄せ、左寄せ</h3>
+
+<p>文字列は通常センタリングされますが、<em>&lt;</em> あるいは <em>&gt;</em> から始めることで
+左寄せ、右寄せにできます</p>
+
+<pre><code class="nohighlight">left   -======&quot;_&lt;_DATA&quot;-
+middle -======DATA-
+right  -======&quot;_&gt;_DATA&quot;-
+</code></pre>
+
+<pre><code class="tchart2svg">left   -======&quot;_&lt;_DATA&quot;-
+middle -======DATA-
+right  -======&quot;_&gt;_DATA&quot;-
+</code></pre>
+
+<h3>? を一文字だけ書くと不定値を表すために色が付きます。</h3>
+
+<pre><code class="nohighlight">clk    _~_~_~_~_~_~
+data   =?==XDATA=====X=?=
+valid  ___~~~~~~___
+</code></pre>
+
+<pre><code class="tchart2svg">clk    _~_~_~_~_~_~
+data   =?==XDATA=====X=?=
+valid  ___~~~~~~___
+</code></pre>
+
+<h3>: を入れると空白を入れ、途切れさせることができます。</h3>
+
+<pre><code class="nohighlight">clk    _~_~_~_:...:~_~_~_~_~
+data   ___~~~~:...:~~____~~_
+</code></pre>
+
+<pre><code class="tchart2svg">clk    _~_~_~_:...:~_~_~_~_~
+data   ___~~~~:...:~~____~~_
+</code></pre>
+
+<h3>不定値部分を表すのに、/ \ * が使えます。</h3>
+
+<pre><code class="nohighlight">clk        _~_~_~_~_~_~_~
+rising     ___==/=/=~~~~~
+falling    ~~~==\=\=_____
+transition ___=D0=*=D1*=D2*=D3___
+</code></pre>
+
+<pre><code class="tchart2svg">clk        _~_~_~_~_~_~_~
+rising     ___==/=/=~~~~~
+falling    ~~~==\=\=_____
+transition ___=D0=*=D1*=D2*=D3___
+</code></pre>
+
+<h3>| を入れるとグリッド線を引けます。</h3>
+
+<pre><code class="nohighlight">clk    _~_~_~_~_~_~_~_~_~
+data   ___~~~~~~~~|____~~_
+enable ___[~~~~~~~~~~]_____
+output ---~~~~~~~~__-----
+</code></pre>
+
+<pre><code class="tchart2svg">clk    _~_~_~_~_~_~_~_~_~
+data   ___~~~~~~~~|____~~_
+enable ___[~~~~~~~~~~]_____
+output ---~~~~~~~~__-----
+</code></pre>
+
+<h3>全ての組み合わせを試してみます</h3>
+
+<pre><code class="nohighlight"># :-~_=/\X*
+0 _~_~_~_~_~_~_[~_~_]~_
+
+1 :::-:~:_:=:/:\:X:*:
+2 -:---~-_-=-/-\-X-*-
+3 ~:~-~~~_~=~/~\~X~*~
+4 _:_-_~___=_/_\_X_*_
+5 =:=-=|~=_===/=\=X=*=
+6 /:/-/~/_/=///\/X/*/
+7 \:\-\~\_\=\/\\\X\*\
+8 X:X-X~X_X=X/X\XXX*X
+9 *:*-*~*_*=*/*\*X***
+</code></pre>
+
+<pre><code class="tchart2svg"># :-~_=/\X*
+0 _~_~_~_~_~_~_[~_~_]~_
+
+1 :::-:~:_:=:/:\:X:*:
+2 -:---~-_-=-/-\-X-*-
+3 ~:~-~~~_~=~/~\~X~*~
+4 _:_-_~___=_/_\_X_*_
+5 =:=-=|~=_===/=\=X=*=
+6 /:/-/~/_/=///\/X/*/
+7 \:\-\~\_\=\/\\\X\*\
+8 X:X-X~X_X=X/X\XXX*X
+9 *:*-*~*_*=*/*\*X***
+</code></pre>
+
+<h3>不定値の塗り分けをテスト。</h3>
+
+<pre><code class="nohighlight">@h_line 30
+@h_skip 20
+@w_transient 5
+@w_caption 60
+test =/=?\=\=?/=X=?X=*?=*=X=?-=?= =?X
+</code></pre>
+
+<pre><code class="tchart2svg">@h_line 30
+@h_skip 20
+@w_transient 5
+@w_caption 60
+test =/=?\=\=?/=X=?X=*?=*=X=?-=?= =?X
+</code></pre>
+
+<h3>遷移の傾きをなくすには @w_transient 0 とします</h3>
+
+<pre><code class="nohighlight">@w_transient 0
+clk _~_~_~_~_~_~_~
+data ___|~~~~|_______
+</code></pre>
+
+<pre><code class="tchart2svg">@w_transient 0
+clk _~_~_~_~_~_~_~
+data ___|~~~~|_______
+</code></pre>
+
+<h3>svg の特殊文字も正しくエスケープされます</h3>
+
+<pre><code class="nohighlight">clk _~_~_~_~_~_~_~
+data ---|===&lt;D1&gt;=X=&lt;D2&gt;==|---
+</code></pre>
+
+<pre><code class="tchart2svg">clk _~_~_~_~_~_~_~
+data ---|===&lt;D1&gt;=X=&lt;D2&gt;==|---
+</code></pre>
+
+<h3>生成された svg には変換元のソースコードが埋め込まれます。</h3>
+
+<p>下記の CDATA の部分です。ソースコードに CDATA の終了を示す ]]&gt; が現れる場合には、
+]]&amp;gt; にエンコードされます。</p>
+
+<pre><code class="xml">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;
+     width=&quot;240pt&quot; height=&quot;60pt&quot; viewBox=&quot;-10 -10 220 40&quot; version=&quot;1.1&quot;&gt;
+&lt;![CDATA[
+clk _~_~_~_~_~_~_~
+data ---|===&lt;D1&gt;=X=&lt;D2&gt;==|---
+]]&gt;
+&lt;g&gt;
+&lt;text x=&quot;35&quot; y=&quot;8.5&quot; text-anchor=&quot;end&quot; font-size=&quot;10&quot; fill=&quot;black&quot; font-family=&quot;Helvetica&quot;&gt;clk&lt;/text&gt;
+&lt;path stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot; d=&quot;M42,10H52L54,0H64L66,10H76L78,0H88L90,10H100L102,0H112L114,10H124L126,0H136L138,10H148L150,0H160L162,10H172L174,0H184L186,10H196L198,0H208&quot; /&gt;
+&lt;text x=&quot;35&quot; y=&quot;28.5&quot; text-anchor=&quot;end&quot; font-size=&quot;10&quot; fill=&quot;black&quot; font-family=&quot;Helvetica&quot;&gt;data&lt;/text&gt;
+&lt;text x=&quot;101.0&quot; y=&quot;28.5&quot; text-anchor=&quot;middle&quot; font-size=&quot;10&quot; fill=&quot;black&quot; font-family=&quot;Helvetica&quot;&gt;&amp;lt;D1&amp;gt;&lt;/text&gt;
+&lt;text x=&quot;149.0&quot; y=&quot;28.5&quot; text-anchor=&quot;middle&quot; font-size=&quot;10&quot; fill=&quot;black&quot; font-family=&quot;Helvetica&quot;&gt;&amp;lt;D2&amp;gt;&lt;/text&gt;&lt;path stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot; d=&quot;M42,25H52H54H64H66H76L78,20H88H90H100H102H112H114H124L126,30H136H138H148H150H160H162H172L174,25H184H186H196H198H208M76,25L78,30H88H90H100H102H112H114H124L126,20H136H138H148H150H160H162H172L174,25&quot; /&gt;
+&lt;path d=&quot;M77,-10V40&quot; stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;red&quot; fill=&quot;none&quot; /&gt;
+&lt;path d=&quot;M173,-10V40&quot; stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;red&quot; fill=&quot;none&quot; /&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<h2>設定値</h2>
+
+<p>括弧内が何も指定しないときの既定値です。</p>
+
+<h3>scale (= 1.0)</h3>
+
+<p>図のサイズを拡大・縮小します。
+複数指定した場合、最後の値だけが意味を持ちます。</p>
+
+<pre><code class="nohighlight">@scale 1.4
+clk     _~_~_~_~_~_~_~_~
+data    ==?=X=D0X=D1X=D2X=D3X=?===
+</code></pre>
+
+<pre><code class="tchart2svg">@scale 1.4
+clk     _~_~_~_~_~_~_~_~
+data    ==?=X=D0X=D1X=D2X=D3X=?===
+</code></pre>
+
+<pre><code class="nohighlight">@scale 0.7
+clk     _~_~_~_~_~_~_~_~
+data    ==?=X=D0X=D1X=D2X=D3X=?===
+</code></pre>
+
+<pre><code class="tchart2svg">@scale 0.7
+clk     _~_~_~_~_~_~_~_~
+data    ==?=X=D0X=D1X=D2X=D3X=?===
+</code></pre>
+
+<h3>margin (= 10)</h3>
+
+<p>チャートの周囲の余白の幅を指定します。</p>
+
+<h3>w_caption (= 40)</h3>
+
+<p>信号名称部分の幅を指定します。</p>
+
+<pre><code class="nohighlight">long_signal_name    _~~~~__~~~~______~~___
+</code></pre>
+
+<pre><code class="tchart2svg">long_signal_name    _~~~~__~~~~______~~___
+</code></pre>
+
+<pre><code class="nohighlight">@w_caption 100
+long_signal_name    _~~~~__~~~~______~~___
+</code></pre>
+
+<pre><code class="tchart2svg">@w_caption 100
+long_signal_name    _~~~~__~~~~______~~___
+</code></pre>
+
+<h3>w_hold (= 10)</h3>
+
+<p>信号の単位時間から遷移時間を引いた部分の幅を指定します。
+途中で変更すれば異なるクロックドメインを表したりできます。</p>
+
+<pre><code class="nohighlight">@w_hold 10
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@w_hold 22
+clock   ~_~_~_~_~_~
+@w_hold 16
+clock   _~_~_~_~_~_~_~_
+</code></pre>
+
+<pre><code class="tchart2svg">@w_hold 10
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@w_hold 22
+clock   ~_~_~_~_~_~
+@w_hold 16
+clock   _~_~_~_~_~_~_~_
+</code></pre>
+
+<h3>w_transient (= 2)</h3>
+
+<p>信号の遷移時間の幅を指定します。
+ゼロを指定すると、遷移のエッジは垂直になります。</p>
+
+<pre><code class="nohighlight">@w_transient 0
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@w_transient 2
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@w_transient 4
+clock   _~_~_~_~_~_~_~_~_~_~_~
+</code></pre>
+
+<pre><code class="tchart2svg">@w_transient 0
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@w_transient 2
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@w_transient 4
+clock   _~_~_~_~_~_~_~_~_~_~_~
+</code></pre>
+
+<h3>h_line (= 10)</h3>
+
+<p>１行の高さを指定します。信号名のフォントサイズもこの値に等しくなります。</p>
+
+<pre><code class="nohighlight">@h_line 10
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@h_line 16
+clock   _~_~_~_~_~_~_~_~_~_~_~
+</code></pre>
+
+<pre><code class="tchart2svg">@h_line 10
+clock   _~_~_~_~_~_~_~_~_~_~_~
+@h_line 16
+clock   _~_~_~_~_~_~_~_~_~_~_~
+</code></pre>
+
+<h3>h_space (= 10)</h3>
+
+<p>行間のスペースを指定します。</p>
+
+<pre><code class="nohighlight">clock   _~_~_~_~_~_~_~_~_~_~_~
+data1   _~~~~__~~~~______~~___
+@h_space 20
+data2   _~~~~__~~~~______~~___
+data3   _~~~~__~~~~______~~___
+</code></pre>
+
+<pre><code class="tchart2svg">clock   _~_~_~_~_~_~_~_~_~_~_~
+data1   _~~~~__~~~~______~~___
+@h_space 20
+data2   _~~~~__~~~~______~~___
+data3   _~~~~__~~~~______~~___
+</code></pre>
+
+<h3>signal_style</h3>
+
+<p>信号線のスタイルを svg の path の属性値の形で与えます。
+規定値は次の通りです。</p>
+
+<pre><code class="nohighlight">stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot;
+
+data1   _~~~~__~~~~______~~___
+@signal_style stroke-linecap=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;green&quot; fill=&quot;none&quot;
+data2   _~~~~__~~~~______~~___
+</code></pre>
+
+<pre><code class="tchart2svg">data1   _~~~~__~~~~______~~___
+@signal_style stroke-linecap=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;green&quot; fill=&quot;none&quot;
+data2   _~~~~__~~~~______~~___
+</code></pre>
+
+<h3>grid_style</h3>
+
+<p>グリッド線のスタイルを svg の path の属性値の形で与えます。
+規定値は次の通りです。</p>
+
+<pre><code class="nohighlight">stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;red&quot; fill=&quot;none&quot;
+</code></pre>
+
+<pre><code class="nohighlight"> @grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot;
+ data1  _~~~~__|~~~~______~~___
+ @grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot; fill=&quot;none&quot;
+ data2  _~~~~__~~~~______|~~___
+</code></pre>
+
+<pre><code class="tchart2svg">@grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot;
+data1   _~~~~__|~~~~______~~___
+@grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot; fill=&quot;none&quot;
+data2   _~~~~__~~~~______|~~___
+</code></pre>
+
+<h3>highlight_style</h3>
+
+<p>ハイライト部分のスタイルを指定します。</p>
+
+<p>規定値は次の通りです。</p>
+
+<pre><code class="nohighlight">stroke=&quot;none&quot; fill=&quot;#ff8&quot;
+</code></pre>
+
+<pre><code class="nohighlight"> data1  _~~~~__[~~~~]______~~___
+ @highlight_style stroke=&quot;green&quot; fill=&quot;#8f8&quot; stroke-width=&quot;1&quot;
+ data2  _~~~~__~~~~______[~~]___
+</code></pre>
+
+<pre><code class="tchart2svg">data1   _~~~~__[~~~~]______~~___
+@highlight_style stroke=&quot;green&quot; fill=&quot;#8f8&quot; stroke-width=&quot;1&quot;
+data2   _~~~~__~~~~______[~~]___
+</code></pre>
+
+<h3>notcare_style</h3>
+
+<p>不定値部分のスタイルを指定します。</p>
+
+<p>規定値は次の通りです。</p>
+
+<pre><code class="nohighlight">fill=&quot;#ccc&quot;
+</code></pre>
+
+<pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~_~_~_~
+data1   ====?=*========*=?======
+@notcare_style stroke=&quot;none&quot; fill=&quot;#8f8&quot;
+data1   ====?=*========*=?======
+</code></pre>
+
+<pre><code class="tchart2svg">clk     _~_~_~_~_~_~_~_~_~_~_~
+data1   ====?=*========*=?======
+@notcare_style stroke=&quot;none&quot; fill=&quot;#8f8&quot;
+data1   ====?=*========*=?======
+</code></pre>
+
+<h3>caption_font</h3>
+
+<p>信号名のフォントを指定します。</p>
+
+<p>規定値は次の通りです。</p>
+
+<pre><code class="nohighlight">fill=&quot;black&quot; font-family=&quot;Helvetica&quot;
+</code></pre>
+
+<pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~_~_~_~
+@caption_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
+@signal_style stroke=&quot;red&quot; fill=&quot;none&quot;
+data    _~~~~______~~____~~~~~
+</code></pre>
+
+<pre><code class="tchart2svg">clk     _~_~_~_~_~_~_~_~_~_~_~
+@caption_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
+@signal_style stroke=&quot;red&quot; fill=&quot;none&quot;
+data    _~~~~______~~____~~~~~
+</code></pre>
+
+<h3>signal_font</h3>
+
+<p>信号部分で用いるフォントを指定します。</p>
+
+<p>規定値は次の通りです。</p>
+
+<pre><code class="nohighlight">fill=&quot;black&quot; font-family=&quot;Helvetica&quot;
+</code></pre>
+
+<pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~
+@signal_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
+data    ==?=X=D0X=D1X=D2X=D3X=?===
+</code></pre>
+
+<pre><code class="tchart2svg">clk     _~_~_~_~_~_~_~_~
+@signal_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
+data    ==?=X=D0X=D1X=D2X=D3X=?===
+</code></pre>
+
+<h3>rotate (= 0)</h3>
+
+<p>未実装</p>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://rawgit.com/eligrey/FileSaver.js/master/FileSaver.min.js"></script>
+<script src="https://rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"></script>
+<script src="https://rawgit.com/osamutake/tchart-coffee/master/lib/tchart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+<script>
+  hljs.configure({languages:[]})
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script>
+// add toc
+(function(){
+	var toc = '';
+	var id = [];
+	var nodes = document.getElementsByTagName('*');
+	for(var i=0; i<nodes.length; i++){
+		if(!/^h[1234]$/i.exec(nodes[i].tagName))
+			continue;
+		var level = nodes[i].tagName[1];
+		while(id.length<level) {
+			id.push(0);
+			toc += '<ul>'
+		}
+		while(id.length>level) {
+			id.pop();
+			toc += '</ul>'
+		}
+		id[level-1]++;
+		var id_s = id.join('-');
+		nodes[i].id = id_s;
+
+		toc += '<li><a href="#'+id_s+'">'+nodes[i].innerHTML+'</a>';
+	}
+	while(id.length>0) {
+		id.pop();
+		toc += '</ul>'
+	}
+	document.getElementById('toc').innerHTML = toc;
+})();
+</script>
+
+<script>
+// format tcharts
+(function(){
+	var codes = document.getElementsByClassName('tchart2svg');
+	for (var i = codes.length-1; i >= 0; i--){
+		var code = codes[i];
+		var svg = TimingChart.format(code.textContent);
+		var div = document.createElement('div');
+		div.className = 'tchart';
+		div.innerHTML = svg;
+		var pre = code.parentNode;
+		pre.parentNode.replaceChild(div, pre);
+	}
+})();
+</script>
+
+</html>

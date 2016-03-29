@@ -1,6 +1,6 @@
 require 'rake/clean'
 
-task :default => [:obj, 'lib/tchart.min.js', 'bin/editor.html', 'bin/editor-offline.html']
+task :default => [:obj, 'lib/tchart.min.js', 'bin/editor.html', 'bin/editor-offline.html', :doc]
 
 directory 'obj'
 
@@ -84,4 +84,25 @@ end
 
 file 'obj/canvas-toBlob.js' do
 	sh "wget https://rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js -O obj/canvas-toBlob.js"
+end
+
+###################
+
+DOCS = FileList['src/doc/*.md'].pathmap('doc/%n.html')
+task :doc => DOCS
+
+require 'erb'
+require 'redcarpet'
+DOCS.each do |doc|
+	file doc => [doc.pathmap('src/doc/%n.md'), 'src/doc/layout.html.erb'] do |t|
+		puts "generating #{t.name} from #{t.prerequisites[0]}"
+		src = File.read t.prerequisites[0]
+		toc = Redcarpet::Markdown.new(
+						Redcarpet::Render::HTML_TOC).render(src)
+		document = Redcarpet::Markdown.new(
+						Redcarpet::Render::HTML.new,
+						fenced_code_blocks: true).render(src)
+		html = ERB.new(File.read t.prerequisites[1]).result(binding)
+		File.write t.name, html
+	end
 end
