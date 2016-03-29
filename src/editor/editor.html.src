@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Timing Chart Formatter</title>
+</head>
+<body>
+  <h1>Timing Chart Formatter</h1>
+  <textarea id="source" cols="60" rows="10" spellcheck="false">
+clock	_~_~_~_~_~_~_~_~_~_~_
+data	=?====X=DATA========X=?====
+valid	_____~~~~~~~~~~______
+ready	_____________[~~]______
+  </textarea>
+  <div id="result"></div>
+  <input type="button" value="Save as SVG" id="as_svg" />
+  <input type="button" value="Save as PNG" id="as_png" />
+  <input type="button" value="Generate Images for Copy" id="for_copy" />
+  Background: <input id="background" value="white" style="width:60px" />
+  <div id="images"></div>
+</body>
+</html>

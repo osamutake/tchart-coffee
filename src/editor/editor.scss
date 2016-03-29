@@ -1,0 +1,18 @@
+@import "compass";
+$line-height: 18px;
+
+textarea {
+  font-size: 15px;
+  line-height: $line-height;
+  padding: 0px 10px;
+}
+
+#source {
+  @include background-image(
+    linear-gradient(left, white 5px, transparent 5px),
+    linear-gradient(right, white 5px, transparent 5px),
+    linear-gradient(white $line-height - 1px,
+      #ddd $line-height - 1px, #ddd $line-height, white $line-height)
+  );
+  background-size: 100% 100%, 100% 100%, 100% $line-height;
+}

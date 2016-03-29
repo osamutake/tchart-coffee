@@ -1,0 +1,20 @@
+{
+  "name": "tchart-coffee",
+  "version": "1.0.0",
+  "homepage": "https://github.com/osamutake/tchart-coffee",
+  "description": "Online timing chart formatter that converts a source code of a timing chart into SVG graphics on browsers.",
+  "main": "./index.js",
+  "scripts": {
+    "prepublish": "rake"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osamutake/tchart-coffee"
+  },
+  "devDependencies": {
+    "coffee-script": ">= 1.10",
+    "uglify-js": "*"
+  },
+  "author": "Osamu Takeuchi <osamu@big.jp>",
+  "license": "MIT"
+}
