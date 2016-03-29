@@ -298,10 +298,15 @@ class TimingChart
   parseLine: (line)->
     return if line[0] == '#'  #### comment
 
+  	isNumeric = (obj)->
+  		type = typeof obj
+  		( type == "number" or type == "string" ) and
+  			     !isNaN( obj - parseFloat( obj ) )
+
     if line[0]=='@'           #### configuration
       if !(matches = /^@([^\s]+)[\s]+([^\s].*)$/.exec(line))
         throw new SyntaxError("Illegal Line: #{line}")
-      if $.isNumeric(@config[matches[1]])
+      if isNumeric(@config[matches[1]])
         @config[matches[1]] = Number(matches[2])
       else
         @config[matches[1]] = matches[2]
