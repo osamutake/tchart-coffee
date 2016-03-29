@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390px" height="273px" viewBox="-10 -10 300 210" version="1.1">
+
+aclk    ~_~_~_~_~_~_~_~_~_~_
+awaddr  ==?X=A1==X=A2X=A3==X==?=X=A4X=?
+awvalid __~~~~~~~~~~____~~__
+awready ____[~~~~]__[~~]____[~~]__
+wdata   ====?X=D1X=D2X=?X=D3X=?X=D4==X=?
+wvalid  ____~~~~__~~__~~~~__
+wready  ____~~~~__~~____~~__
+bresp   ====00================
+bvalid  ____~~~~__~~____~~__
+bready  ~~~~~~~~~~~~~~~~~~1~~
+
+<g>
+<path d="M233,-5V195H257V-5Z" stroke="none" fill="#ff8"></path>
+<path d="M161,-5V195H185V-5Z" stroke="none" fill="#ff8"></path>
+<path d="M89,-5V195H137V-5Z" stroke="none" fill="#ff8"></path>
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">aclk</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,0H52L54,10H64L66,0H76L78,10H88L90,0H100L102,10H112L114,0H124L126,10H136L138,0H148L150,10H160L162,0H172L174,10H184L186,0H196L198,10H208L210,0H220L222,10H232L234,0H244L246,10H256L258,0H268L270,10H280"></path>
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">awaddr</text>
+
+<path stroke="none" d="M42,20H64L65,25L64,30H42Z" fill="#ccc"></path><text x="53" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<text x="89" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">A1</text>
+<text x="125" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">A2</text>
+<text x="161" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">A3</text>
+
+<path stroke="none" d="M186,20H232L233,25L232,30H186L185,25Z" fill="#ccc"></path><text x="209" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<text x="245" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">A4</text>
+
+<path stroke="none" d="M258,20H280L280,30H258L257,25Z" fill="#ccc"></path><text x="269" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,30H64L66,20H112L114,30H136L138,20H184L186,30H232L234,20H256L258,30H280M42,20H64L66,30H112L114,20H136L138,30H184L186,20H232L234,30H256L258,20H280"></path>
+
+<text x="35" y="48.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">awvalid</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,50H64L66,40H184L186,50H232L234,40H256L258,50H280"></path>
+
+<text x="35" y="68.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">awready</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,70H88L90,60H136L138,70H160L162,60H184L186,70H232L234,60H256L258,70H280"></path>
+
+<text x="35" y="88.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">wdata</text>
+
+<path stroke="none" d="M42,80H88L89,85L88,90H42Z" fill="#ccc"></path><text x="65" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<text x="101" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D1</text>
+<text x="125" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D2</text>
+
+<path stroke="none" d="M138,80H160L161,85L160,90H138L137,85Z" fill="#ccc"></path><text x="149" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<text x="173" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D3</text>
+
+<path stroke="none" d="M186,80H208L209,85L208,90H186L185,85Z" fill="#ccc"></path><text x="197" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<text x="233" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D4</text>
+
+<path stroke="none" d="M258,80H280L280,90H258L257,85Z" fill="#ccc"></path><text x="269" y="88.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,90H88L90,80H112L114,90H136L138,80H160L162,90H184L186,80H208L210,90H256L258,80H280M42,80H88L90,90H112L114,80H136L138,90H160L162,80H184L186,90H208L210,80H256L258,90H280"></path>
+
+<text x="35" y="108.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">wvalid</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,110H88L90,100H136L138,110H160L162,100H184L186,110H208L210,100H256L258,110H280"></path>
+
+<text x="35" y="128.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">wready</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,130H88L90,120H136L138,130H160L162,120H184L186,130H232L234,120H256L258,130H280"></path>
+
+<text x="35" y="148.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">bresp</text>
+<text x="161" y="148.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">00</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,150H280M42,140H280"></path>
+
+<text x="35" y="168.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">bvalid</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,170H88L90,160H136L138,170H160L162,160H184L186,170H232L234,160H256L258,170H280"></path>
+
+<text x="35" y="188.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">bready</text>
+<text x="161" y="188.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">1</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,180H280"></path>
+
+</g>
+</svg>
