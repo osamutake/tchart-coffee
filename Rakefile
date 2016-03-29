@@ -89,7 +89,11 @@ end
 ###################
 
 DOCS = FileList['src/doc/*.md'].pathmap('doc/%n.html')
-task :doc => DOCS
+task :doc => DOCS + ['doc/example.svg']
+
+file 'doc/example.svg' => 'src/doc/example.svg' do
+  sh 'cp src/doc/example.svg doc/example.svg'
+end
 
 require 'erb'
 require 'redcarpet'
