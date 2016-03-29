@@ -3,42 +3,51 @@ class SvgPath
     @segments = []
     @style = style
 
+  # we assume x1 <= x2
   draw: (x1, y1, x2, y2)->
+    # drop empty segment
     @segments.push([x1,y1,x2,y2])
 
-  svg: ->
-    for s in @segments
-      s[4]= 0
-      s[5]= null
-
+  connectSegments: ->
     for s1 in @segments
+      s1[4]= null   # points next segment
+      s1[5]= null   # points prev segment
       for s2 in @segments
         if s1[2]==s2[0] and s1[3]==s2[1]
-          s1[4] += 1
-          s2[4] += 1
+          s1[4] = s2
+          s2[5] = s1
+          break
 
+    # higher priority for non-ending segments
     for s1 in @segments
-      for s2 in @segments
-        continue if s2[4]<2 or s1[2]!=s2[0] or s1[3]!=s2[1]
-        s1[5]= s2
-        s2[4]= -1
-        break
-      continue if s1[5]
-      for s2 in @segments
-        continue if s2[4]!=1 or s1[2]!=s2[0] or s1[3]!=s2[1]
-        s1[5]= s2
-        s2[4]= -1
-        break
+      # connected to an end segment
+      if s1[4] and !s1[4][4]
+        for s2 in @segiments
+          if s1[2]==s2[0] and s1[3]==s2[1] and s2[4] and !s2[5]
+            s1[4][5]=null
+            s1[4]=s2
+            s2[5]=s1
+            break
+      # connected from an end segment
+      if s1[5] and !s1[5][5]
+        for s2 in @segiments
+          if s2[2]==s1[0] and s2[3]==s1[1] and s2[5] and !s2[4]
+            s1[5][4]=null
+            s1[5]=s2
+            s2[4]=s1
+            break
 
+  svg: ->
     path = []
     for s1 in @segments
-      continue if s1[4]<0
+      continue if s1[5] # connected from other segment
       s = s1
       cx = s[0]
       cy = s[1]
       path.push "M#{cx},#{cy}"
       while s
         if cx == s[2] && cy == s[3]
+          # should not occur
         else if cx == s[2]
           if path[path.length-1][0]=='V'
             path[path.length-1]= "V#{s[3]}"
@@ -53,7 +62,7 @@ class SvgPath
           path.push "L#{s[2]},#{s[3]}"
         cx = s[2]
         cy = s[3]
-        s = s[5]
+        s = s[4]  # next segment
 
     """<path #{@style} d="#{path.join('')}" />\n"""
 
