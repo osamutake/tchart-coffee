@@ -285,6 +285,9 @@ class TimingChart
   setConfig: (config)->
     @config[k]= v for own k,v of config
 
+  setupGrid: ->
+    @grid = [@config.w_caption+@config.w_transient/2.0, @config.w_hold+@config.w_transient]
+
   parse: (source)->
     @svg= []
     @guides= []
@@ -293,6 +296,7 @@ class TimingChart
     @x_max= @config.w_caption
     source= source.replace(/^\n+/, '')
     source= source.replace(/\n+$/, '')
+    setupGrid() if @config.grid == 'on'
     for line in source.split("\n")
       @parseLine(line)
     @processGrid()
@@ -332,7 +336,7 @@ class TimingChart
       if matches[1]=='grid'
         unless /on|off/.exec matches[2]
           throw new SyntaxError("Illegal Line: #{line}")
-        @grid = [@config.w_caption+@config.w_transient/2.0, @config.w_hold+@config.w_transient]
+        setupGrid()
       else if isNumeric(@config[matches[1]])
         @config[matches[1]] = Number(matches[2])
       else
