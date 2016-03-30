@@ -296,7 +296,7 @@ class TimingChart
     @x_max= @config.w_caption
     source= source.replace(/^\n+/, '')
     source= source.replace(/\n+$/, '')
-    setupGrid() if @config.grid == 'on'
+    @setupGrid() if @config.grid == 'on'
     for line in source.split("\n")
       @parseLine(line)
     @processGrid()
@@ -336,7 +336,7 @@ class TimingChart
       if matches[1]=='grid'
         unless /on|off/.exec matches[2]
           throw new SyntaxError("Illegal Line: #{line}")
-        setupGrid()
+        @setupGrid()
       else if isNumeric(@config[matches[1]])
         @config[matches[1]] = Number(matches[2])
       else
