@@ -26,5 +26,20 @@ into a timing chart like:
 ![example.svg](https://rawgit.com/osamutake/tchart-coffee/master/doc/example.svg)
 
 
-[The detailed description in Japanese is available.](https://rawgit.com/osamutake/tchart-coffee/master/doc/index.html)
+[The detailed description in Japanese is available.](https://rawgit.com/osamutake/tchart-coffee/master/doc/index.html)  
 [日本語の詳しい説明はこちらです](https://rawgit.com/osamutake/tchart-coffee/master/doc/index.html)
+
+# 謝辞
+
+熊谷正朗さんの "Timing chart formatter by kumagai"  
+[http://www.mech.tohoku-gakuin.ac.jp/rde/contents/library/tchart/indexframe.html](http://www.mech.tohoku-gakuin.ac.jp/rde/contents/library/tchart/indexframe.html)
+
+を大いに参考にさせていただきました。
+
+記述文法はほぼ熊谷さんの tchart を踏襲しています。
+
+大変有用なツールをご提供くださったことに感謝いたします。
+
+# ライセンス
+
+MIT
