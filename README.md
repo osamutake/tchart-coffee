@@ -23,8 +23,8 @@ bready  ~~~~~~~~~~~~~~~~~~1~~
 into a timing chart like:  
 次のようなチャートに変換できます。
 
-![example.svg](https://cdn.rawgit.com/osamutake/tchart-coffee/master/doc/example.svg)
+![example.svg](https://rawgit.com/osamutake/tchart-coffee/master/doc/example.svg)
 
 
-[The detailed description in Japanese is available.](https://cdn.rawgit.com/osamutake/tchart-coffee/master/doc/index.html)  
-[日本語の詳しい説明はこちらです](https://cdn.rawgit.com/osamutake/tchart-coffee/master/doc/index.html)
+[The detailed description in Japanese is available.](https://rawgit.com/osamutake/tchart-coffee/master/doc/index.html)
+[日本語の詳しい説明はこちらです](https://rawgit.com/osamutake/tchart-coffee/master/doc/index.html)

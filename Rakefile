@@ -100,6 +100,9 @@ file 'doc/example.svg' => 'src/doc/example.svg' do
   sh 'cp src/doc/example.svg doc/example.svg'
 end
 
+require 'json'
+version = 'v' + JSON.load(File.read 'package.json')['version']
+
 require 'erb'
 require 'redcarpet'
 DOCS.each do |doc|
@@ -111,6 +114,7 @@ DOCS.each do |doc|
 		document = Redcarpet::Markdown.new(
 						Redcarpet::Render::HTML.new,
 						fenced_code_blocks: true).render(src)
+		document.gsub!('&lt;%=version%&gt;', version)
 		html = ERB.new(File.read t.prerequisites[1]).result(binding)
 		File.write t.name, html
 	end

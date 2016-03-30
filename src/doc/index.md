@@ -52,7 +52,7 @@ var svg = TimingChart.format(source);
 ### Use on the Web
 
 ```javascript
-<script src="https://cdn.rawgit.com/osamutake/tchart-coffee/master/lib/tchart-coffee.min.js"></script>
+<script src="https://cdn.rawgit.com/osamutake/tchart-coffee/<%=version%>/lib/tchart-coffee.min.js"></script>
 <script>
   var svg = TimingChart.format(source);
 </script>
@@ -67,7 +67,7 @@ var svg = TimingChart.format(source);
 
 こちらからご利用いただけます。
 
-<a href="https://cdn.rawgit.com/osamutake/tchart-coffee/master/bin/editor-offline.html" target="_blank">https://cdn.rawgit.com/osamutake/tchart-coffee/master/bin/editor-offline.html</a>
+<a href="https://rawgit.com/osamutake/tchart-coffee/master/bin/editor-offline.html" target="_blank">https://rawgit.com/osamutake/tchart-coffee/master/bin/editor-offline.html</a>
 
 * 清書したタイミングチャートを SVG または PNG 形式で保存できます。
 * 入力内容はサーバーに送られることなく、完全にブラウザ上だけで画像を生成しますので、守秘義務の問題も発生しません。心配であればリンク先の html を PC に保存して、そこから立ち上げれば、完全にオフラインの状態でも動作します。
