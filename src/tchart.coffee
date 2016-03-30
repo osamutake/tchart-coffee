@@ -316,10 +316,10 @@ class TimingChart
   parseLine: (line)->
     return if line[0] == '#'  #### comment
 
-  	isNumeric = (obj)->
-  		type = typeof obj
-  		( type == "number" or type == "string" ) and
-  			     !isNaN( obj - parseFloat( obj ) )
+    isNumeric = (obj)->
+      type = typeof obj
+      ( type == "number" or type == "string" ) and
+             !isNaN( obj - parseFloat( obj ) )
 
     if line[0]=='@'           #### configuration
       if !(matches = /^@([^\s]+)[\s]+([^\s].*)$/.exec(line))
