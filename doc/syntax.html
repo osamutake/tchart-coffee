@@ -71,6 +71,7 @@ signal ___~~~~___
 
 <pre><code class="nohighlight">clk1   _~_~_~_~_~
 clk2   __~~__~~__
+
 signal ___~~_____
 </code></pre>
 
@@ -93,7 +94,7 @@ signal ___~~_____
 
 <h3>_ と ~ で 0 と 1 を表します。</h3>
 
-<p>~~ が上に寄らず中央に来るフォントだとちょっと見にくいですね。。。</p>
+<p>~~ が上に寄らず、-- と近い高さに来るフォントだとちょっと見にくいですね。。。</p>
 
 <h3>- がハイインピーダンス状態です。</h3>
 
@@ -157,7 +158,7 @@ space -======&quot;A      &quot;-
 
 <h3>右寄せ、左寄せ</h3>
 
-<p>文字列は通常センタリングされますが、<em>&lt;</em> あるいは <em>&gt;</em> から始めることで
+<p>文字列は通常センタリングされますが、<code>_&lt;_</code> あるいは <code>_&gt;_</code> から始めることで
 左寄せ、右寄せにできます</p>
 
 <pre><code class="nohighlight">left   -======&quot;_&lt;_DATA&quot;-
@@ -194,13 +195,15 @@ data   ___~~~~:...:~~____~~_
 
 <h3>不定値部分を表すのに、/ \ * が使えます。</h3>
 
-<pre><code class="nohighlight">clk        _~_~_~_~_~_~_~
+<pre><code class="nohighlight">@w_transient 4
+clk        _~_~_~_~_~_~_~
 rising     ___==/=/=~~~~~
 falling    ~~~==\=\=_____
 transition ___=D0=*=D1*=D2*=D3___
 </code></pre>
 
-<pre><code class="tchart2svg">clk        _~_~_~_~_~_~_~
+<pre><code class="tchart2svg">@w_transient 4
+clk        _~_~_~_~_~_~_~
 rising     ___==/=/=~~~~~
 falling    ~~~==\=\=_____
 transition ___=D0=*=D1*=D2*=D3___
@@ -210,6 +213,8 @@ transition ___=D0=*=D1*=D2*=D3___
 
 <p>公開当初はこれを「グリッド線」と呼んでいましたが、
 あまり適切でないので「ガイド線」と呼ぶことにしました。</p>
+
+<h3>[ ] でくくるとハイライトできます</h3>
 
 <pre><code class="nohighlight">clk    _~_~_~_~_~_~_~_~_~
 data   ___~~~~~~~~|____~~_
@@ -225,7 +230,8 @@ output ---~~~~~~~~__-----
 
 <h3>全ての組み合わせを試してみます</h3>
 
-<pre><code class="nohighlight"># :-~_=/\X*
+<pre><code class="nohighlight">@w_transient 4
+# :-~_=/\X*
 0 _~_~_~_~_~_~_[~_~_]~_
 
 1 :::-:~:_:=:/:\:X:*:
@@ -239,7 +245,8 @@ output ---~~~~~~~~__-----
 9 *:*-*~*_*=*/*\*X***
 </code></pre>
 
-<pre><code class="tchart2svg"># :-~_=/\X*
+<pre><code class="tchart2svg">@w_transient 4
+# :-~_=/\X*
 0 _~_~_~_~_~_~_[~_~_]~_
 
 1 :::-:~:_:=:/:\:X:*:
@@ -293,7 +300,7 @@ data ---|===&lt;D1&gt;=X=&lt;D2&gt;==|---
 
 <h3>生成された svg には変換元のソースコードが埋め込まれます。</h3>
 
-<p>下記の CDATA の部分です。ソースコードに CDATA の終了を示す ]]&gt; が現れる場合には、
+<p>下記の CDATA の部分です。ソースコード中に CDATA の終了を示す ]]&gt; が現れる場合には、
 ]]&amp;gt; にエンコードされます。</p>
 
 <pre><code class="xml">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;
@@ -349,7 +356,8 @@ data    ==?=X=D0X=D1X=D2X=D3X=?===
 
 <h3>w_caption (= 40)</h3>
 
-<p>信号名称部分の幅を指定します。</p>
+<p>信号名称部分の幅を指定します。
+長い名前の左側が切れてしまう場合に設定します。</p>
 
 <pre><code class="nohighlight">long_signal_name _~~~~__~~~~______~~___
 </code></pre>
@@ -371,19 +379,19 @@ long_signal_name _~~~~__~~~~______~~___
 途中で変更すれば異なるクロックドメインを表したりできます。</p>
 
 <pre><code class="nohighlight">@w_hold 10
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock ~_~_~_~_~_~
+clock2 ~_~_~_~_~_~
 @w_hold 16
-clock _~_~_~_~_~_~_~_
+clock3 _~_~_~_~_~_~_~_
 </code></pre>
 
 <pre><code class="tchart2svg">@w_hold 10
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock ~_~_~_~_~_~
+clock2 ~_~_~_~_~_~
 @w_hold 16
-clock _~_~_~_~_~_~_~_
+clock3 _~_~_~_~_~_~_~_
 </code></pre>
 
 <h3>w_transient (= 2)</h3>
@@ -392,19 +400,19 @@ clock _~_~_~_~_~_~_~_
 ゼロを指定すると、遷移のエッジは垂直になります。</p>
 
 <pre><code class="nohighlight">@w_transient 0
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock2 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock3 _~_~_~_~_~_~_~_~_~_~_~
 </code></pre>
 
 <pre><code class="tchart2svg">@w_transient 0
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock2 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock3 _~_~_~_~_~_~_~_~_~_~_~
 </code></pre>
 
 <h3>h_line (= 10)</h3>
@@ -447,8 +455,9 @@ data3 _~~~~__~~~~______~~___
 規定値は次の通りです。</p>
 
 <pre><code class="nohighlight">stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot;
+</code></pre>
 
-data1 _~~~~__~~~~______~~___
+<pre><code class="nohighlight">data1 _~~~~__~~~~______~~___
 @signal_style stroke-linecap=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;green&quot; fill=&quot;none&quot;
 data2 _~~~~__~~~~______~~___
 </code></pre>
@@ -461,7 +470,7 @@ data2 _~~~~__~~~~______~~___
 <h3>grid (= off)</h3>
 
 <p>on にするとグリッド線を引きます。
-on にされた時点での時間間隔で引きます。</p>
+グリッド線の間隔は on にされた時点での単位時間を元に決定されます。</p>
 
 <pre><code class="nohighlight">clk1 _~_~_~_~_~_~_~_~_~_~
 @w_hold 13
@@ -505,8 +514,7 @@ clk2 _~_~_~_~_~_~_~_~
 
 <h3>guide_style (= stroke-width=&quot;0.6&quot; stroke=&quot;red&quot;)</h3>
 
-<p>ガイド線のスタイルを svg の path の属性値の形で与えます。
-規定値は次の通りです。</p>
+<p>ガイド線のスタイルを svg の path の属性値の形で与えます。</p>
 
 <p>公開当初はこれを「グリッド線」と呼んでいましたが、
 あまり適切でないので「ガイド線」と呼ぶことにしました。
@@ -558,18 +566,18 @@ data1 ====?=*========*=?======
 
 <p>信号名のフォントを指定します。</p>
 
-<p>規定値は次の通りです。</p>
-
-<pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~_~_~_~
-@caption_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
+<pre><code class="nohighlight">@scale 1.5
+clk     _~_~_~_~_~_~_~
+@caption_font fill=&quot;red&quot; font-family=&quot;Times&quot;
 @signal_style stroke=&quot;red&quot; fill=&quot;none&quot;
-data  _~~~~______~~____~~~~~
+data  _~~~~______~~_
 </code></pre>
 
-<pre><code class="tchart2svg">clk     _~_~_~_~_~_~_~_~_~_~_~
-@caption_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
+<pre><code class="tchart2svg">@scale 1.5
+clk     _~_~_~_~_~_~_~
+@caption_font fill=&quot;red&quot; font-family=&quot;Times&quot;
 @signal_style stroke=&quot;red&quot; fill=&quot;none&quot;
-data  _~~~~______~~____~~~~~
+data  _~~~~______~~_
 </code></pre>
 
 <h3>signal_font (= fill=&quot;black&quot; font-family=&quot;Helvetica&quot;)</h3>

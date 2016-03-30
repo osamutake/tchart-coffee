@@ -71,6 +71,7 @@ signal ___~~~~___
 ```nohighlight
 clk1   _~_~_~_~_~
 clk2   __~~__~~__
+
 signal ___~~_____
 ```
 
@@ -96,7 +97,7 @@ signal ___~~_____
 
 ### _ と ~ で 0 と 1 を表します。
 
-~~ が上に寄らず中央に来るフォントだとちょっと見にくいですね。。。
+~~ が上に寄らず、-- と近い高さに来るフォントだとちょっと見にくいですね。。。
 
 ### - がハイインピーダンス状態です。
 
@@ -167,7 +168,7 @@ space -======"A      "-
 
 ### 右寄せ、左寄せ
 
-文字列は通常センタリングされますが、_<_ あるいは _>_ から始めることで
+文字列は通常センタリングされますが、```_<_``` あるいは ```_>_``` から始めることで
 左寄せ、右寄せにできます
 
 ```nohighlight
@@ -211,6 +212,7 @@ data   ___~~~~:...:~~____~~_
 ### 不定値部分を表すのに、/ \ * が使えます。
 
 ```nohighlight
+@w_transient 4
 clk        _~_~_~_~_~_~_~
 rising     ___==/=/=~~~~~
 falling    ~~~==\=\=_____
@@ -218,6 +220,7 @@ transition ___=D0=*=D1*=D2*=D3___
 ```
 
 ```tchart2svg
+@w_transient 4
 clk        _~_~_~_~_~_~_~
 rising     ___==/=/=~~~~~
 falling    ~~~==\=\=_____
@@ -228,6 +231,8 @@ transition ___=D0=*=D1*=D2*=D3___
 
 公開当初はこれを「グリッド線」と呼んでいましたが、
 あまり適切でないので「ガイド線」と呼ぶことにしました。
+
+### [ ] でくくるとハイライトできます
 
 ```nohighlight
 clk    _~_~_~_~_~_~_~_~_~
@@ -246,6 +251,7 @@ output ---~~~~~~~~__-----
 ### 全ての組み合わせを試してみます
 
 ```nohighlight
+@w_transient 4
 # :-~_=/\X*
 0 _~_~_~_~_~_~_[~_~_]~_
 
@@ -261,6 +267,7 @@ output ---~~~~~~~~__-----
 ```
 
 ```tchart2svg
+@w_transient 4
 # :-~_=/\X*
 0 _~_~_~_~_~_~_[~_~_]~_
 
@@ -321,7 +328,7 @@ data ---|===<D1>=X=<D2>==|---
 
 ### 生成された svg には変換元のソースコードが埋め込まれます。
 
-下記の CDATA の部分です。ソースコードに CDATA の終了を示す ]]> が現れる場合には、
+下記の CDATA の部分です。ソースコード中に CDATA の終了を示す ]]> が現れる場合には、
 ]]&amp;gt; にエンコードされます。
 
 ```xml
@@ -382,6 +389,7 @@ data    ==?=X=D0X=D1X=D2X=D3X=?===
 
 ### w_caption (= 40)
 信号名称部分の幅を指定します。
+長い名前の左側が切れてしまう場合に設定します。
 
 ```nohighlight
 long_signal_name _~~~~__~~~~______~~___
@@ -408,20 +416,20 @@ long_signal_name _~~~~__~~~~______~~___
 
 ```nohighlight
 @w_hold 10
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock ~_~_~_~_~_~
+clock2 ~_~_~_~_~_~
 @w_hold 16
-clock _~_~_~_~_~_~_~_
+clock3 _~_~_~_~_~_~_~_
 ```
 
 ```tchart2svg
 @w_hold 10
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock ~_~_~_~_~_~
+clock2 ~_~_~_~_~_~
 @w_hold 16
-clock _~_~_~_~_~_~_~_
+clock3 _~_~_~_~_~_~_~_
 ```
 
 ### w_transient (= 2)
@@ -431,20 +439,20 @@ clock _~_~_~_~_~_~_~_
 
 ```nohighlight
 @w_transient 0
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock2 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock3 _~_~_~_~_~_~_~_~_~_~_~
 ```
 
 ```tchart2svg
 @w_transient 0
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock1 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock2 _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock _~_~_~_~_~_~_~_~_~_~_~
+clock3 _~_~_~_~_~_~_~_~_~_~_~
 ```
 
 ### h_line (= 10)
@@ -491,7 +499,9 @@ data3 _~~~~__~~~~______~~___
 
 ```nohighlight
 stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none"
+```
 
+```nohighlight
 data1 _~~~~__~~~~______~~___
 @signal_style stroke-linecap="round" stroke-width="2" stroke="green" fill="none"
 data2 _~~~~__~~~~______~~___
@@ -506,7 +516,7 @@ data2 _~~~~__~~~~______~~___
 ### grid (= off)
 
 on にするとグリッド線を引きます。
-on にされた時点での時間間隔で引きます。
+グリッド線の間隔は on にされた時点での単位時間を元に決定されます。
 
 ```nohighlight
 clk1 _~_~_~_~_~_~_~_~_~_~
@@ -553,7 +563,6 @@ clk2 _~_~_~_~_~_~_~_~
 ### guide_style (= stroke-width="0.6" stroke="red")
 
 ガイド線のスタイルを svg の path の属性値の形で与えます。
-規定値は次の通りです。
 
 公開当初はこれを「グリッド線」と呼んでいましたが、
 あまり適切でないので「ガイド線」と呼ぶことにしました。
@@ -611,20 +620,20 @@ data1 ====?=*========*=?======
 
 信号名のフォントを指定します。
 
-規定値は次の通りです。
-
 ```nohighlight
-clk     _~_~_~_~_~_~_~_~_~_~_~
-@caption_font fill="red" font-family="Helvetica"
+@scale 1.5
+clk     _~_~_~_~_~_~_~
+@caption_font fill="red" font-family="Times"
 @signal_style stroke="red" fill="none"
-data  _~~~~______~~____~~~~~
+data  _~~~~______~~_
 ```
 
 ```tchart2svg
-clk     _~_~_~_~_~_~_~_~_~_~_~
-@caption_font fill="red" font-family="Helvetica"
+@scale 1.5
+clk     _~_~_~_~_~_~_~
+@caption_font fill="red" font-family="Times"
 @signal_style stroke="red" fill="none"
-data  _~~~~______~~____~~~~~
+data  _~~~~______~~_
 ```
 
 ### signal_font (= fill="black" font-family="Helvetica")
