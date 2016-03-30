@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/andyferra/2554919/raw/10ce87fe71b23216e3075d5648b8b9e56f7758e1/github.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+	
+	
+	<title>tchart-coffee ライブラリの使い方</title>
+</head>
+<body>
+<p><a href="index.html">tchart-coffee の説明に戻る</a></p>
+
+<h1>tchart-coffee ライブラリの使い方</h1><div id="toc"></div>
+
+<p><a href="index.html">tchart-coffee の説明に戻る</a></p>
+
+<h2>使用例１：html 中に書いたソースコードを SVG に直して表示する</h2>
+
+<p>タイミングチャートのソースコードを次のように html に埋め込んでおき、</p>
+
+<pre><code class="html">&lt;p&gt;このタイミング図が見えますか？&lt;/p&gt;
+
+&lt;script type=&quot;text/tchart&quot;&gt;
+aclk    ~_~_~_~_~_~_~_~_~_~_
+awaddr  ==?X=A1==X=A2X=A3==X==?=X=A4X=?
+awvalid __~~~~~~~~~~____~~__
+awready ____[~~~~]__[~~]____[~~]__
+wdata   ====?X=D1X=D2X=?X=D3X=?X=D4==X=?
+wvalid  ____~~~~__~~__~~~~__
+wready  ____~~~~__~~____~~__
+bresp   ====00================
+bvalid  ____~~~~__~~____~~__
+bready  ~~~~~~~~~~~~~~~~~~1~~
+&lt;/script&gt;
+</code></pre>
+
+<p><code>&lt;/body&gt;</code> の後ろに以下のコードを追加すれば、
+自動的に SVG に変換して表示できます。</p>
+
+<pre><code class="html">&lt;script src=&#39;https://cdn.rawgit.com/osamutake/tchart-coffee/v1.1.0/lib/tchart.min.js&#39;&gt;&lt;/script&gt;
+&lt;script&gt;
+(function(){
+  var codes = document.getElementsByTagName(&#39;script&#39;);
+  for (var i = codes.length-1; i &gt;= 0; i--){
+    var code = codes[i];
+    if(code.getAttribute(&#39;type&#39;)!==&#39;text/tchart&#39;)
+      continue;
+    var svg = TimingChart.format(code.textContent);
+    var div = document.createElement(&#39;div&#39;);
+    div.className = &#39;tchart&#39;;
+    div.innerHTML = svg;
+    code.parentNode.replaceChild(div, code);
+  }
+})();
+&lt;/script&gt;
+</code></pre>
+
+<h3>実行例</h3>
+
+<p><a href="http://jsbin.com/nukico/edit?html,output">http://jsbin.com/nukico/edit?html,output</a></p>
+
+<h2>使用例２：Markdown 中に書いたソースコードを SVG に直して表示する</h2>
+
+<p>次のような形で markdown 中にソースコードを埋め込んだ物が、</p>
+
+<pre><code class="tchart2svg">   clock  _~_~_~_~_~
+   signal ___~~~~___
+</code></pre>
+
+<p>html に直したときに次のように変換されるのであれば、</p>
+
+<pre><code class="html"> &lt;pre&gt;&lt;code class=&quot;lang-tchart2svg&quot;&gt;
+clock  _~_~_~_~_~
+signal ___~~~~___
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+
+<p>レイアウトファイルの <code>&lt;/body&gt;</code> の直後に以下のコードを記述すると、
+自動的に SVG に変換して表示できます。</p>
+
+<pre><code class="html">&lt;script src=&#39;https://cdn.rawgit.com/osamutake/tchart-coffee/v1.1.0/lib/tchart.min.js&#39;&gt;&lt;/script&gt;
+&lt;script&gt;
+(function(){
+  var codes = document.getElementsByClassName(&#39;lang-tchart2svg&#39;);
+  for (var i = codes.length-1; i &gt;= 0; i--){
+    var code = codes[i];
+    var svg = TimingChart.format(code.textContent);
+    var div = document.createElement(&#39;div&#39;);
+    div.className = &#39;tchart&#39;;
+    div.innerHTML = svg;
+    var pre = code.parentNode
+    pre.parentNode.replaceChild(div, pre);
+  }
+})();
+&lt;/script&gt;
+</code></pre>
+
+<h3>実行例</h3>
+
+<p><a href="http://jsbin.com/wecayu/edit?html,output">http://jsbin.com/wecayu/edit?html,output</a></p>
+
+<h2>ライブラリの API</h2>
+
+<h3>基本事項</h3>
+
+<p>Node.jp で使う場合には、</p>
+
+<pre><code class="bash">$ npm install tchart-coffee
+</code></pre>
+
+<p>としてパッケージをインストールした後、</p>
+
+<pre><code class="javascript">var TimingChart = require(&#39;tchart-coffee&#39;);
+</code></pre>
+
+<p>のようにして TimingChart オブジェクトを得ます。</p>
+
+<p>ブラウザ上で使う場合には、</p>
+
+<pre><code class="html">&lt;script src=&quot;https://cdn.rawgit.com/osamutake/tchart-coffee/v1.1.0/lib/tchart-coffee.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>とすれば <code>this.TimingChart</code> が利用可能になります。</p>
+
+<h3>svg = TimingChart.format(source [, config])</h3>
+
+<p>source にタイミングチャートのソースコードを渡すと、文字列として SVG を返します。</p>
+
+<p>config に連想配列を渡すことで、設定値のデフォルトを変更できます。</p>
+
+<pre><code class="javascript">// someElement の直下に SVG を表示する
+var svg = TimingChart.format(source);
+someElement.innerHTML = svg
+</code></pre>
+
+<pre><code class="javascript">// @grid on を指定して変換する
+var svg = TimingChart.format(source, {grid: &#39;on&#39;});
+</code></pre>
+
+<p>作成した SVG の縦横サイズが必要にならない限り、
+以下の API は必要ありません。</p>
+
+<h3>tchart = TimingChart.new([config])</h3>
+
+<p>新しい TimingChart インスタンスを作成して返します。</p>
+
+<p>config に連想配列を渡すことで、設定値のデフォルトを変更できます。</p>
+
+<h3>svg = TimingChart.prototype.parse(source)</h3>
+
+<p>source にタイミングチャートのソースコードを渡すと、文字列として SVG を返します。</p>
+
+<p>その際、width, height, svg の各変数を適切に設定します。</p>
+
+<pre><code class="javascript">// @grid on を指定して tchart を作成
+var tchart = TimingChart.new({grid: &#39;on&#39;});
+
+// ソースコードを SVG に変換し、その縦横幅を得る
+tchart.parse(source);
+var svg = tchart.svg;
+var width = tchart.width;
+var height = tchart.height;
+</code></pre>
+
+<h3>TimingChart.prototype.width</h3>
+
+<p>作成した SVG の幅を返します。</p>
+
+<h3>TimingChart.prototype.height</h3>
+
+<p>作成した SVG の高さを返します。</p>
+
+<h3>TimingChart.prototype.svg</h3>
+
+<p>作成した SVG をテキストとして取得します。</p>
+
+<p><a href="index.html">tchart-coffee の説明に戻る</a></p>
+
+</body>
+
+<script src="https://rawgit.com/osamutake/tchart-coffee/master/lib/tchart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+<script>
+  hljs.configure({languages:[]})
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script>
+// add toc
+(function(){
+	var toc = '';
+	var id = [];
+	var nodes = document.getElementsByTagName('*');
+	for(var i=0; i<nodes.length; i++){
+		if(!/^h[1234]$/i.exec(nodes[i].tagName))
+			continue;
+		var level = nodes[i].tagName[1];
+		while(id.length<level) {
+			id.push(0);
+			toc += '<ul>'
+		}
+		while(id.length>level) {
+			id.pop();
+			toc += '</ul>'
+		}
+		id[level-1]++;
+		var id_s = id.join('-');
+		nodes[i].id = id_s;
+
+		toc += '<li><a href="#'+id_s+'">'+nodes[i].innerHTML+'</a>';
+	}
+	while(id.length>0) {
+		id.pop();
+		toc += '</ul>'
+	}
+	document.getElementById('toc').innerHTML = toc;
+})();
+</script>
+
+<script>
+// format tcharts
+(function(){
+	var codes = document.getElementsByClassName('tchart2svg');
+	for (var i = codes.length-1; i >= 0; i--){
+		var code = codes[i];
+		var svg = TimingChart.format(code.textContent);
+		var div = document.createElement('div');
+		div.className = 'tchart';
+		div.innerHTML = svg;
+		var pre = code.parentNode;
+		pre.parentNode.replaceChild(div, pre);
+	}
+})();
+</script>
+
+</html>

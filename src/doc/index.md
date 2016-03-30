@@ -66,7 +66,7 @@ var svg = TimingChart.format(source);
 
 ### API
 
-未稿
+[詳しいライブラリの使い方はこちらです](library.html)
 
 エディタ
 ----------------

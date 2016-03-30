@@ -1,7 +1,9 @@
+[tchart-coffee の説明に戻る](index.html)
+
 tchart-coffee 文法
 ================
 
-[tchart の説明へ戻る](index.html)
+[tchart-coffee の説明に戻る](index.html)
 
 チャート文法(概要)
 ----------------
@@ -644,3 +646,5 @@ data	==?=X=D0X=D1X=D2X=D3X=?===
 ### rotate (= 0)
 
 未実装
+
+[tchart-coffee の説明に戻る](index.html)
