@@ -121,7 +121,7 @@ class TimeLine
     @current = 0
     @crosses = []
     @strings = []
-    @grids   = []
+    @guides   = []
     @highlights = []
 
   ys: (s)-> @y + (1-s) * @config.h_line
@@ -138,7 +138,7 @@ class TimeLine
       if maches = /^\s+/.exec(line)
         ;
       else if maches = /^\|/.exec(line)
-        @grids.push [@xh(), @config.grid_style]
+        @guides.push [@xh(), @config.guide_style]
       else if maches = /^\[/.exec(line)
         if @highlights.length==0 or Array.isArray(@highlights[@highlights.length-1])
           @highlights.push @xh()
@@ -263,12 +263,16 @@ class TimingChart
     h_line:         10
     h_space:        10
     signal_style:   'stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none"'
-    grid_style:     'stroke-linecap="round" stroke-width="0.6" stroke="red" fill="none"'
+    guide_style:     'stroke-width="0.6" stroke="red" fill="none"'
     highlight_style:'stroke="none" fill="#ff8"'
     notcare_style:  'fill="#ccc"'
     rotate:         0
     caption_font:   'fill="black" font-family="Helvetica"'
     signal_font:    'fill="black" font-family="Helvetica"'
+    grid:          'off'
+    grid_style:    'stroke-width="0.3" stroke="#ccc" fill="none"'
+    grid_step:     1
+    grid_offset:   0
 
   @format = (source, config= {}) ->
     (new TimingChart(config)).parse(source)
@@ -283,7 +287,7 @@ class TimingChart
 
   parse: (source)->
     @svg= []
-    @grids= []
+    @guides= []
     @highlights= []
     @y= -1
     @x_max= @config.w_caption
@@ -291,7 +295,8 @@ class TimingChart
     source= source.replace(/\n+$/, '')
     for line in source.split("\n")
       @parseLine(line)
-    @processGrids()
+    @processGrid()
+    @processGuides()
     @processHighlights()
     @formatSVG(source)
 
@@ -324,7 +329,11 @@ class TimingChart
     if line[0]=='@'           #### configuration
       if !(matches = /^@([^\s]+)[\s]+([^\s].*)$/.exec(line))
         throw new SyntaxError("Illegal Line: #{line}")
-      if isNumeric(@config[matches[1]])
+      if matches[1]=='grid'
+        unless /on|off/.exec matches[2]
+          throw new SyntaxError("Illegal Line: #{line}")
+        @grid = [@config.w_caption+@config.w_transient/2.0, @config.w_hold+@config.w_transient]
+      else if isNumeric(@config[matches[1]])
         @config[matches[1]] = Number(matches[2])
       else
         @config[matches[1]] = matches[2]
@@ -363,15 +372,25 @@ class TimingChart
     tline= new TimeLine(@config, @y)
     @svg.push tline.parse(line)
     @x_max= tline.x if tline.x > @x_max
-    for g in tline.grids
-      @grids.push g
+    for g in tline.guides
+      @guides.push g
     for h in tline.highlights
       @highlights.push h
 
-  processGrids: ->
+  processGrid: ->
+    return unless @grid
     t = -@config.margin/2.0
     b = @y+@config.margin/2.0
-    for g in @grids
+
+    x = @grid[0] + @grid[1] * @config.grid_offset
+    while x < @x_max
+      @svg.unshift """<path d="M#{x},#{t}V#{b}" #{@config.grid_style} />"""
+      x += @grid[1] * @config.grid_step
+
+  processGuides: ->
+    t = -@config.margin/2.0
+    b = @y+@config.margin/2.0
+    for g in @guides
       @svg.push """<path d="M#{g[0]},#{t}V#{b}" #{g[1]} />"""
 
   processHighlights: ->
