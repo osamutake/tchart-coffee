@@ -1,10 +1,15 @@
 require 'rake/clean'
 
-task :default => [:obj, 'lib/tchart.min.js', 'bin/editor.html', 'bin/editor-offline.html', :doc]
+task :default => ['.git/hooks/pre-commit', :obj, 'lib/tchart.min.js', 'bin/editor.html', 'bin/editor-offline.html', :doc]
 
 directory 'obj'
 
 uglify = "node_modules/.bin/uglifyjs"
+
+file '.git/hooks/pre-commit' do
+  sh 'echo "#!/bin/sh\\nrake\\n" > .git/hooks/pre-commit'
+  sh 'chmod u+x .git/hooks/pre-commit'
+end
 
 file 'lib/tchart.min.js' => 'lib/tchart.js' do |t|
 	src = t.prerequisites[0]
