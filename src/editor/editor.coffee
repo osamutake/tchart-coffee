@@ -4,6 +4,7 @@ update = ->
   source = $('#source').val().replace(/\s+$/, '')
   source += "\n@grid on\n" if $('#grid').prop('checked')
   return if lastSource==source
+  $('#images').html('')
   lastSource = source
 
   lastChart= new TimingChart()

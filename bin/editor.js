@@ -15,6 +15,7 @@
     if (lastSource === source) {
       return;
     }
+    $('#images').html('');
     lastSource = source;
     lastChart = new TimingChart();
     svg = lastChart.parse(source);
