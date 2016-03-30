@@ -67,8 +67,15 @@ class SvgPath
     """<path #{@style} d="#{path.join('')}" />\n"""
 
 class TimeLine
-  # : - ~ _ =
-  @transitions = [
+  # lines for transitions from ? to ?
+  # definitions for charactors are given
+  # by @transitionLines
+  #
+  #  12 - ~ _ / ` X =
+  #  43
+  #
+  #  : - ~ _ = from
+  @transitions = [# to
     '          ', # :
     '  - 1 4 14', # -
     '  2 ~ / ~/', # ~
@@ -80,6 +87,8 @@ class TimeLine
     '  23`~/_=X', # *
   ]
 
+  # all the numbers are y-coordinates ranging
+  # from 0 (bottom) to 1 (top).
   @transitionLines =
     ' ' : []
     '~' : [[1,1]]
@@ -94,6 +103,10 @@ class TimeLine
     '4' : [[0,0.5]]
     '-' : [[0.5,0.5]]
 
+  # lines for hold part:
+  # all the numbers are y-coordinates ranging
+  # from 0 (bottom) to 1 (top).
+  #
   #                :  -     ~   _   =
   @stateLines = [[],[0.5],[1],[0],[0,1]]
 
@@ -111,23 +124,17 @@ class TimeLine
     @grids   = []
     @highlights = []
 
-  ys: (s)->
-    @y + (1-s) * @config.h_line
-  y0: ->
-    @y + @config.h_line
-  y1: ->
-    @y
-  yz: ->
-    @y + @config.h_line/2.0
-  xh: ->
-    @x + @config.w_transient/2.0
-  xt: ->
-    @x + @config.w_transient
-  xr: ->
-    @x + @config.w_transient + @config.w_hold
+  ys: (s)-> @y + (1-s) * @config.h_line
+  y0: -> @ys(0)
+  y1: -> @ys(1)
+  yz: -> @ys(0.5)
+
+  xh: -> @x + @config.w_transient/2.0
+  xt: -> @x + @config.w_transient
+  xr: -> @x + @config.w_transient + @config.w_hold
 
   parse: (line)->
-    while line != ''
+    while line.length > 0
       if maches = /^\s+/.exec(line)
         ;
       else if maches = /^\|/.exec(line)
