@@ -34,6 +34,11 @@ bvalid  ____~~~~__~~____~~__
 bready  ~~~~~~~~~~~~~~~~~~1~~
 ```
 
+MIT ライセンスの下、以下のアドレスで公開されています。
+
++ GitHub : [https://github.com/osamutake/tchart-coffee](https://github.com/osamutake/tchart-coffee)
++ npm: [https://www.npmjs.com/package/tchart-coffee](https://www.npmjs.com/package/tchart-coffee)
+
 ライブラリ
 ----------------
 
@@ -41,8 +46,9 @@ bready  ~~~~~~~~~~~~~~~~~~1~~
 
 ### Use with Node.js
 
-    $ npm install tchart-coffee
-
+```bash
+$ npm install tchart-coffee
+```
 
 ```javascript
 var TimingChart = require('tchart-coffee');
