@@ -526,6 +526,7 @@ clk2 _~_~_~_~_~_~_~_~
 
 グリッド線の開始位置、間隔、スタイルを変更します。
 offset や step を使ってクロックエッジに合わせたグリッド線を引けます。
+最後に指定された値が使われます。
 
 ```nohighlight
 clk1 _~_~_~_~_~_~_~_~_~_~
@@ -547,7 +548,8 @@ clk1 _~_~_~_~_~_~_~_~_~_~
 clk2 _~_~_~_~_~_~_~_~
 ```
 
-### gruide_style
+### guide_style (= stroke-width="0.6" stroke="red")
+
 ガイド線のスタイルを svg の path の属性値の形で与えます。
 規定値は次の通りです。
 
@@ -556,31 +558,22 @@ clk2 _~_~_~_~_~_~_~_~
 現在、「グリッド線」は別の意味で使われているのでご注意下さい。
 
 ```nohighlight
-stroke-width="0.6" stroke="red"
-```
-
-```nohighlight
- @gruide_style stroke-width="0.6" stroke="black"
+ @guide_style stroke-width="0.6" stroke="black"
  data1	_~~~~__|~~~~______~~___
- @gruide_style stroke-width="0.6" stroke="#0CC"
+ @guide_style stroke-width="0.6" stroke="#0CC"
  data2	_~~~~__~~~~______|~~___
 ```
 
 ```tchart2svg
-@gruide_style stroke-width="0.6" stroke="black"
+@guide_style stroke-width="0.6" stroke="black"
 data1	_~~~~__|~~~~______~~___
-@gruide_style stroke-width="0.6" stroke="#0CC"
+@guide_style stroke-width="0.6" stroke="#0CC"
 data2	_~~~~__~~~~______|~~___
 ```
 
-### highlight_style
+### highlight_style (= stroke="none" fill="#ff8")
+
 ハイライト部分のスタイルを指定します。
-
-規定値は次の通りです。
-
-```nohighlight
-stroke="none" fill="#ff8"
-```
 
 ```nohighlight
  data1	_~~~~__[~~~~]______~~___
@@ -594,15 +587,9 @@ data1	_~~~~__[~~~~]______~~___
 data2	_~~~~__~~~~______[~~]___
 ```
 
-### notcare_style
+### notcare_style (= fill="#ccc")
 
 不定値部分のスタイルを指定します。
-
-規定値は次の通りです。
-
-```nohighlight
-fill="#ccc"
-```
 
 ```nohighlight
 clk     _~_~_~_~_~_~_~_~_~_~_~
@@ -618,17 +605,13 @@ data1	====?=*========*=?======
 data1	====?=*========*=?======
 ```
 
-### caption_font
+### caption_font (= fill="black" font-family="Helvetica")
 
 信号名のフォントを指定します。
 
 規定値は次の通りです。
 
 ```nohighlight
-fill="black" font-family="Helvetica"
-```
-
-```nohighlight
 clk     _~_~_~_~_~_~_~_~_~_~_~
 @caption_font fill="red" font-family="Helvetica"
 @signal_style stroke="red" fill="none"
@@ -642,15 +625,9 @@ clk     _~_~_~_~_~_~_~_~_~_~_~
 data	_~~~~______~~____~~~~~
 ```
 
-### signal_font
+### signal_font (= fill="black" font-family="Helvetica")
 
 信号部分で用いるフォントを指定します。
-
-規定値は次の通りです。
-
-```nohighlight
-fill="black" font-family="Helvetica"
-```
 
 ```nohighlight
 clk     _~_~_~_~_~_~_~_~

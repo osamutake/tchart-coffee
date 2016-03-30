@@ -480,7 +480,8 @@ clk2 _~_~_~_~_~_~_~_~
 <h3>grid_style (= stroke-width=&quot;0.3&quot; stroke=&quot;#ddd&quot;)</h3>
 
 <p>グリッド線の開始位置、間隔、スタイルを変更します。
-offset や step を使ってクロックエッジに合わせたグリッド線を引けます。</p>
+offset や step を使ってクロックエッジに合わせたグリッド線を引けます。
+最後に指定された値が使われます。</p>
 
 <pre><code class="nohighlight">clk1 _~_~_~_~_~_~_~_~_~_~
 @w_hold 13
@@ -500,7 +501,7 @@ clk2 _~_~_~_~_~_~_~_~
 clk2 _~_~_~_~_~_~_~_~
 </code></pre>
 
-<h3>gruide_style</h3>
+<h3>guide_style (= stroke-width=&quot;0.6&quot; stroke=&quot;red&quot;)</h3>
 
 <p>ガイド線のスタイルを svg の path の属性値の形で与えます。
 規定値は次の通りです。</p>
@@ -509,29 +510,21 @@ clk2 _~_~_~_~_~_~_~_~
 あまり適切でないので「ガイド線」と呼ぶことにしました。
 現在、「グリッド線」は別の意味で使われているのでご注意下さい。</p>
 
-<pre><code class="nohighlight">stroke-width=&quot;0.6&quot; stroke=&quot;red&quot;
-</code></pre>
-
-<pre><code class="nohighlight"> @gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;black&quot;
+<pre><code class="nohighlight"> @guide_style stroke-width=&quot;0.6&quot; stroke=&quot;black&quot;
  data1  _~~~~__|~~~~______~~___
- @gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot;
+ @guide_style stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot;
  data2  _~~~~__~~~~______|~~___
 </code></pre>
 
-<pre><code class="tchart2svg">@gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;black&quot;
+<pre><code class="tchart2svg">@guide_style stroke-width=&quot;0.6&quot; stroke=&quot;black&quot;
 data1   _~~~~__|~~~~______~~___
-@gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot;
+@guide_style stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot;
 data2   _~~~~__~~~~______|~~___
 </code></pre>
 
-<h3>highlight_style</h3>
+<h3>highlight_style (= stroke=&quot;none&quot; fill=&quot;#ff8&quot;)</h3>
 
 <p>ハイライト部分のスタイルを指定します。</p>
-
-<p>規定値は次の通りです。</p>
-
-<pre><code class="nohighlight">stroke=&quot;none&quot; fill=&quot;#ff8&quot;
-</code></pre>
 
 <pre><code class="nohighlight"> data1  _~~~~__[~~~~]______~~___
  @highlight_style stroke=&quot;green&quot; fill=&quot;#8f8&quot; stroke-width=&quot;1&quot;
@@ -543,14 +536,9 @@ data2   _~~~~__~~~~______|~~___
 data2   _~~~~__~~~~______[~~]___
 </code></pre>
 
-<h3>notcare_style</h3>
+<h3>notcare_style (= fill=&quot;#ccc&quot;)</h3>
 
 <p>不定値部分のスタイルを指定します。</p>
-
-<p>規定値は次の通りです。</p>
-
-<pre><code class="nohighlight">fill=&quot;#ccc&quot;
-</code></pre>
 
 <pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~_~_~_~
 data1   ====?=*========*=?======
@@ -564,15 +552,12 @@ data1   ====?=*========*=?======
 data1   ====?=*========*=?======
 </code></pre>
 
-<h3>caption_font</h3>
+<h3>caption_font (= fill=&quot;black&quot; font-family=&quot;Helvetica&quot;)</h3>
 
 <p>信号名のフォントを指定します。</p>
 
 <p>規定値は次の通りです。</p>
 
-<pre><code class="nohighlight">fill=&quot;black&quot; font-family=&quot;Helvetica&quot;
-</code></pre>
-
 <pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~_~_~_~
 @caption_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
 @signal_style stroke=&quot;red&quot; fill=&quot;none&quot;
@@ -585,14 +570,9 @@ data    _~~~~______~~____~~~~~
 data    _~~~~______~~____~~~~~
 </code></pre>
 
-<h3>signal_font</h3>
+<h3>signal_font (= fill=&quot;black&quot; font-family=&quot;Helvetica&quot;)</h3>
 
 <p>信号部分で用いるフォントを指定します。</p>
-
-<p>規定値は次の通りです。</p>
-
-<pre><code class="nohighlight">fill=&quot;black&quot; font-family=&quot;Helvetica&quot;
-</code></pre>
 
 <pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~
 @signal_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
