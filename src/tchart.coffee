@@ -263,14 +263,14 @@ class TimingChart
     h_line:         10
     h_space:        10
     signal_style:   'stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none"'
-    guide_style:     'stroke-width="0.6" stroke="red" fill="none"'
+    guide_style:     'stroke-width="0.6" stroke="red"'
     highlight_style:'stroke="none" fill="#ff8"'
     notcare_style:  'fill="#ccc"'
     rotate:         0
     caption_font:   'fill="black" font-family="Helvetica"'
     signal_font:    'fill="black" font-family="Helvetica"'
     grid:          'off'
-    grid_style:    'stroke-width="0.3" stroke="#ccc" fill="none"'
+    grid_style:    'stroke-width="0.3" stroke="#ccc"'
     grid_step:     1
     grid_offset:   0
 
@@ -404,4 +404,3 @@ if module?.exports?
   module.exports = TimingChart
 else
   this.TimingChart = TimingChart
-  

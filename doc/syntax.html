@@ -204,7 +204,10 @@ falling    ~~~==\=\=_____
 transition ___=D0=*=D1*=D2*=D3___
 </code></pre>
 
-<h3>| を入れるとグリッド線を引けます。</h3>
+<h3>| を入れるとガイド線を引けます。</h3>
+
+<p>公開当初はこれを「グリッド線」と呼んでいましたが、
+あまり適切でないので「ガイド線」と呼ぶことにしました。</p>
 
 <pre><code class="nohighlight">clk    _~_~_~_~_~_~_~_~_~
 data   ___~~~~~~~~|____~~_
@@ -453,23 +456,71 @@ data2   _~~~~__~~~~______~~___
 data2   _~~~~__~~~~______~~___
 </code></pre>
 
-<h3>grid_style</h3>
+<h3>grid (= off)</h3>
 
-<p>グリッド線のスタイルを svg の path の属性値の形で与えます。
-規定値は次の通りです。</p>
+<p>on にするとグリッド線を引きます。
+on にされた時点での時間間隔で引きます。</p>
 
-<pre><code class="nohighlight">stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;red&quot; fill=&quot;none&quot;
+<pre><code class="nohighlight">clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+clk2 _~_~_~_~_~_~_~_~
 </code></pre>
 
-<pre><code class="nohighlight"> @grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot;
+<pre><code class="tchart2svg">clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+clk2 _~_~_~_~_~_~_~_~
+</code></pre>
+
+<h3>grid_offset (= 0)</h3>
+
+<h3>grid_step (= 1)</h3>
+
+<h3>grid_style (= stroke-width=&quot;0.3&quot; stroke=&quot;#ddd&quot;)</h3>
+
+<p>グリッド線の開始位置、間隔、スタイルを変更します。
+offset や step を使ってクロックエッジに合わせたグリッド線を引けます。</p>
+
+<pre><code class="nohighlight">clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+@grid_offset 1
+@grid_step 2
+@grid_style stroke-width=&quot;0.3&quot; stroke=&quot;#0f0&quot;
+clk2 _~_~_~_~_~_~_~_~
+</code></pre>
+
+<pre><code class="tchart2svg">clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+@grid_offset 1
+@grid_step 2
+@grid_style stroke-width=&quot;0.3&quot; stroke=&quot;#0f0&quot;
+clk2 _~_~_~_~_~_~_~_~
+</code></pre>
+
+<h3>gruide_style</h3>
+
+<p>ガイド線のスタイルを svg の path の属性値の形で与えます。
+規定値は次の通りです。</p>
+
+<p>公開当初はこれを「グリッド線」と呼んでいましたが、
+あまり適切でないので「ガイド線」と呼ぶことにしました。
+現在、「グリッド線」は別の意味で使われているのでご注意下さい。</p>
+
+<pre><code class="nohighlight">stroke-width=&quot;0.6&quot; stroke=&quot;red&quot;
+</code></pre>
+
+<pre><code class="nohighlight"> @gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;black&quot;
  data1  _~~~~__|~~~~______~~___
- @grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot; fill=&quot;none&quot;
+ @gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot;
  data2  _~~~~__~~~~______|~~___
 </code></pre>
 
-<pre><code class="tchart2svg">@grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot;
+<pre><code class="tchart2svg">@gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;black&quot;
 data1   _~~~~__|~~~~______~~___
-@grid_style stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot; fill=&quot;none&quot;
+@gruide_style stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot;
 data2   _~~~~__~~~~______|~~___
 </code></pre>
 

@@ -222,9 +222,10 @@ falling    ~~~==\=\=_____
 transition ___=D0=*=D1*=D2*=D3___
 ```
 
-### | を入れるとグリッド線を引けます。
+### | を入れるとガイド線を引けます。
 
-###
+公開当初はこれを「グリッド線」と呼んでいましたが、
+あまり適切でないので「ガイド線」と呼ぶことにしました。
 
 ```nohighlight
 clk    _~_~_~_~_~_~_~_~_~
@@ -500,25 +501,75 @@ data1	_~~~~__~~~~______~~___
 data2	_~~~~__~~~~______~~___
 ```
 
-### grid_style
-グリッド線のスタイルを svg の path の属性値の形で与えます。
-規定値は次の通りです。
+### grid (= off)
+
+on にするとグリッド線を引きます。
+on にされた時点での時間間隔で引きます。
 
 ```nohighlight
-stroke-linecap="round" stroke-width="0.6" stroke="red" fill="none"
+clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+clk2 _~_~_~_~_~_~_~_~
+```
+
+```tchart2svg
+clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+clk2 _~_~_~_~_~_~_~_~
+```
+
+### grid_offset (= 0)
+### grid_step (= 1)
+### grid_style (= stroke-width="0.3" stroke="#ddd")
+
+グリッド線の開始位置、間隔、スタイルを変更します。
+offset や step を使ってクロックエッジに合わせたグリッド線を引けます。
+
+```nohighlight
+clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+@grid_offset 1
+@grid_step 2
+@grid_style stroke-width="0.3" stroke="#0f0"
+clk2 _~_~_~_~_~_~_~_~
+```
+
+```tchart2svg
+clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+@grid_offset 1
+@grid_step 2
+@grid_style stroke-width="0.3" stroke="#0f0"
+clk2 _~_~_~_~_~_~_~_~
+```
+
+### gruide_style
+ガイド線のスタイルを svg の path の属性値の形で与えます。
+規定値は次の通りです。
+
+公開当初はこれを「グリッド線」と呼んでいましたが、
+あまり適切でないので「ガイド線」と呼ぶことにしました。
+現在、「グリッド線」は別の意味で使われているのでご注意下さい。
+
+```nohighlight
+stroke-width="0.6" stroke="red"
 ```
 
 ```nohighlight
- @grid_style stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none"
+ @gruide_style stroke-width="0.6" stroke="black"
  data1	_~~~~__|~~~~______~~___
- @grid_style stroke-linecap="round" stroke-width="0.6" stroke="#0CC" fill="none"
+ @gruide_style stroke-width="0.6" stroke="#0CC"
  data2	_~~~~__~~~~______|~~___
 ```
 
 ```tchart2svg
-@grid_style stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none"
+@gruide_style stroke-width="0.6" stroke="black"
 data1	_~~~~__|~~~~______~~___
-@grid_style stroke-linecap="round" stroke-width="0.6" stroke="#0CC" fill="none"
+@gruide_style stroke-width="0.6" stroke="#0CC"
 data2	_~~~~__~~~~______|~~___
 ```
 
