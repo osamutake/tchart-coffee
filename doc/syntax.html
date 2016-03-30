@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://cdn.rawgit.com/andyferra/2554919/raw/10ce87fe71b23216e3075d5648b8b9e56f7758e1/github.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
-	
-	
-	<title>tchart-coffee 文法</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/andyferra/2554919/raw/10ce87fe71b23216e3075d5648b8b9e56f7758e1/github.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+  
+  
+  <title>tchart-coffee 文法</title>
 </head>
 <body>
 <p><a href="index.html">tchart-coffee の説明に戻る</a></p>
@@ -351,18 +351,18 @@ data    ==?=X=D0X=D1X=D2X=D3X=?===
 
 <p>信号名称部分の幅を指定します。</p>
 
-<pre><code class="nohighlight">long_signal_name    _~~~~__~~~~______~~___
+<pre><code class="nohighlight">long_signal_name _~~~~__~~~~______~~___
 </code></pre>
 
-<pre><code class="tchart2svg">long_signal_name    _~~~~__~~~~______~~___
+<pre><code class="tchart2svg">long_signal_name _~~~~__~~~~______~~___
 </code></pre>
 
 <pre><code class="nohighlight">@w_caption 100
-long_signal_name    _~~~~__~~~~______~~___
+long_signal_name _~~~~__~~~~______~~___
 </code></pre>
 
 <pre><code class="tchart2svg">@w_caption 100
-long_signal_name    _~~~~__~~~~______~~___
+long_signal_name _~~~~__~~~~______~~___
 </code></pre>
 
 <h3>w_hold (= 10)</h3>
@@ -371,19 +371,19 @@ long_signal_name    _~~~~__~~~~______~~___
 途中で変更すれば異なるクロックドメインを表したりできます。</p>
 
 <pre><code class="nohighlight">@w_hold 10
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock   ~_~_~_~_~_~
+clock ~_~_~_~_~_~
 @w_hold 16
-clock   _~_~_~_~_~_~_~_
+clock _~_~_~_~_~_~_~_
 </code></pre>
 
 <pre><code class="tchart2svg">@w_hold 10
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock   ~_~_~_~_~_~
+clock ~_~_~_~_~_~
 @w_hold 16
-clock   _~_~_~_~_~_~_~_
+clock _~_~_~_~_~_~_~_
 </code></pre>
 
 <h3>w_transient (= 2)</h3>
@@ -392,19 +392,19 @@ clock   _~_~_~_~_~_~_~_
 ゼロを指定すると、遷移のエッジは垂直になります。</p>
 
 <pre><code class="nohighlight">@w_transient 0
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 </code></pre>
 
 <pre><code class="tchart2svg">@w_transient 0
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 </code></pre>
 
 <h3>h_line (= 10)</h3>
@@ -412,33 +412,33 @@ clock   _~_~_~_~_~_~_~_~_~_~_~
 <p>１行の高さを指定します。信号名のフォントサイズもこの値に等しくなります。</p>
 
 <pre><code class="nohighlight">@h_line 10
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @h_line 16
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 </code></pre>
 
 <pre><code class="tchart2svg">@h_line 10
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @h_line 16
-clock   _~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 </code></pre>
 
 <h3>h_space (= 10)</h3>
 
 <p>行間のスペースを指定します。</p>
 
-<pre><code class="nohighlight">clock   _~_~_~_~_~_~_~_~_~_~_~
-data1   _~~~~__~~~~______~~___
+<pre><code class="nohighlight">clock _~_~_~_~_~_~_~_~_~_~_~
+data1 _~~~~__~~~~______~~___
 @h_space 20
-data2   _~~~~__~~~~______~~___
-data3   _~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
+data3 _~~~~__~~~~______~~___
 </code></pre>
 
-<pre><code class="tchart2svg">clock   _~_~_~_~_~_~_~_~_~_~_~
-data1   _~~~~__~~~~______~~___
+<pre><code class="tchart2svg">clock _~_~_~_~_~_~_~_~_~_~_~
+data1 _~~~~__~~~~______~~___
 @h_space 20
-data2   _~~~~__~~~~______~~___
-data3   _~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
+data3 _~~~~__~~~~______~~___
 </code></pre>
 
 <h3>signal_style</h3>
@@ -448,14 +448,14 @@ data3   _~~~~__~~~~______~~___
 
 <pre><code class="nohighlight">stroke-linecap=&quot;round&quot; stroke-width=&quot;0.6&quot; stroke=&quot;black&quot; fill=&quot;none&quot;
 
-data1   _~~~~__~~~~______~~___
+data1 _~~~~__~~~~______~~___
 @signal_style stroke-linecap=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;green&quot; fill=&quot;none&quot;
-data2   _~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
 </code></pre>
 
-<pre><code class="tchart2svg">data1   _~~~~__~~~~______~~___
+<pre><code class="tchart2svg">data1 _~~~~__~~~~______~~___
 @signal_style stroke-linecap=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;green&quot; fill=&quot;none&quot;
-data2   _~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
 </code></pre>
 
 <h3>grid (= off)</h3>
@@ -519,9 +519,9 @@ clk2 _~_~_~_~_~_~_~_~
 </code></pre>
 
 <pre><code class="tchart2svg">@guide_style stroke-width=&quot;0.6&quot; stroke=&quot;black&quot;
-data1   _~~~~__|~~~~______~~___
+data1 _~~~~__|~~~~______~~___
 @guide_style stroke-width=&quot;0.6&quot; stroke=&quot;#0CC&quot;
-data2   _~~~~__~~~~______|~~___
+data2 _~~~~__~~~~______|~~___
 </code></pre>
 
 <h3>highlight_style (= stroke=&quot;none&quot; fill=&quot;#ff8&quot;)</h3>
@@ -533,9 +533,9 @@ data2   _~~~~__~~~~______|~~___
  data2  _~~~~__~~~~______[~~]___
 </code></pre>
 
-<pre><code class="tchart2svg">data1   _~~~~__[~~~~]______~~___
+<pre><code class="tchart2svg">data1 _~~~~__[~~~~]______~~___
 @highlight_style stroke=&quot;green&quot; fill=&quot;#8f8&quot; stroke-width=&quot;1&quot;
-data2   _~~~~__~~~~______[~~]___
+data2 _~~~~__~~~~______[~~]___
 </code></pre>
 
 <h3>notcare_style (= fill=&quot;#ccc&quot;)</h3>
@@ -543,15 +543,15 @@ data2   _~~~~__~~~~______[~~]___
 <p>不定値部分のスタイルを指定します。</p>
 
 <pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~_~_~_~
-data1   ====?=*========*=?======
+data1 ====?=*========*=?======
 @notcare_style stroke=&quot;none&quot; fill=&quot;#8f8&quot;
-data1   ====?=*========*=?======
+data1 ====?=*========*=?======
 </code></pre>
 
 <pre><code class="tchart2svg">clk     _~_~_~_~_~_~_~_~_~_~_~
-data1   ====?=*========*=?======
+data1 ====?=*========*=?======
 @notcare_style stroke=&quot;none&quot; fill=&quot;#8f8&quot;
-data1   ====?=*========*=?======
+data1 ====?=*========*=?======
 </code></pre>
 
 <h3>caption_font (= fill=&quot;black&quot; font-family=&quot;Helvetica&quot;)</h3>
@@ -563,13 +563,13 @@ data1   ====?=*========*=?======
 <pre><code class="nohighlight">clk     _~_~_~_~_~_~_~_~_~_~_~
 @caption_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
 @signal_style stroke=&quot;red&quot; fill=&quot;none&quot;
-data    _~~~~______~~____~~~~~
+data  _~~~~______~~____~~~~~
 </code></pre>
 
 <pre><code class="tchart2svg">clk     _~_~_~_~_~_~_~_~_~_~_~
 @caption_font fill=&quot;red&quot; font-family=&quot;Helvetica&quot;
 @signal_style stroke=&quot;red&quot; fill=&quot;none&quot;
-data    _~~~~______~~____~~~~~
+data  _~~~~______~~____~~~~~
 </code></pre>
 
 <h3>signal_font (= fill=&quot;black&quot; font-family=&quot;Helvetica&quot;)</h3>
@@ -598,54 +598,54 @@ data    ==?=X=D0X=D1X=D2X=D3X=?===
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
 <script>
   hljs.configure({languages:[]})
-	hljs.initHighlightingOnLoad();
+  hljs.initHighlightingOnLoad();
 </script>
 
 <script>
 // add toc
 (function(){
-	var toc = '';
-	var id = [];
-	var nodes = document.getElementsByTagName('*');
-	for(var i=0; i<nodes.length; i++){
-		if(!/^h[1234]$/i.exec(nodes[i].tagName))
-			continue;
-		var level = nodes[i].tagName[1];
-		while(id.length<level) {
-			id.push(0);
-			toc += '<ul>'
-		}
-		while(id.length>level) {
-			id.pop();
-			toc += '</ul>'
-		}
-		id[level-1]++;
-		var id_s = id.join('-');
-		nodes[i].id = id_s;
+  var toc = '';
+  var id = [];
+  var nodes = document.getElementsByTagName('*');
+  for(var i=0; i<nodes.length; i++){
+    if(!/^h[1234]$/i.exec(nodes[i].tagName))
+      continue;
+    var level = nodes[i].tagName[1];
+    while(id.length<level) {
+      id.push(0);
+      toc += '<ul>'
+    }
+    while(id.length>level) {
+      id.pop();
+      toc += '</ul>'
+    }
+    id[level-1]++;
+    var id_s = id.join('-');
+    nodes[i].id = id_s;
 
-		toc += '<li><a href="#'+id_s+'">'+nodes[i].innerHTML+'</a>';
-	}
-	while(id.length>0) {
-		id.pop();
-		toc += '</ul>'
-	}
-	document.getElementById('toc').innerHTML = toc;
+    toc += '<li><a href="#'+id_s+'">'+nodes[i].innerHTML+'</a>';
+  }
+  while(id.length>0) {
+    id.pop();
+    toc += '</ul>'
+  }
+  document.getElementById('toc').innerHTML = toc;
 })();
 </script>
 
 <script>
 // format tcharts
 (function(){
-	var codes = document.getElementsByClassName('tchart2svg');
-	for (var i = codes.length-1; i >= 0; i--){
-		var code = codes[i];
-		var svg = TimingChart.format(code.textContent);
-		var div = document.createElement('div');
-		div.className = 'tchart';
-		div.innerHTML = svg;
-		var pre = code.parentNode;
-		pre.parentNode.replaceChild(div, pre);
-	}
+  var codes = document.getElementsByClassName('tchart2svg');
+  for (var i = codes.length-1; i >= 0; i--){
+    var code = codes[i];
+    var svg = TimingChart.format(code.textContent);
+    var div = document.createElement('div');
+    div.className = 'tchart';
+    div.innerHTML = svg;
+    var pre = code.parentNode;
+    pre.parentNode.replaceChild(div, pre);
+  }
 })();
 </script>
 

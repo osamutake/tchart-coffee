@@ -356,25 +356,25 @@ data ---|===<D1>=X=<D2>==|---
 ```nohighlight
 @scale 1.4
 clk     _~_~_~_~_~_~_~_~
-data	==?=X=D0X=D1X=D2X=D3X=?===
+data    ==?=X=D0X=D1X=D2X=D3X=?===
 ```
 
 ```tchart2svg
 @scale 1.4
 clk     _~_~_~_~_~_~_~_~
-data	==?=X=D0X=D1X=D2X=D3X=?===
+data    ==?=X=D0X=D1X=D2X=D3X=?===
 ```
 
 ```nohighlight
 @scale 0.7
 clk     _~_~_~_~_~_~_~_~
-data	==?=X=D0X=D1X=D2X=D3X=?===
+data    ==?=X=D0X=D1X=D2X=D3X=?===
 ```
 
 ```tchart2svg
 @scale 0.7
 clk     _~_~_~_~_~_~_~_~
-data	==?=X=D0X=D1X=D2X=D3X=?===
+data    ==?=X=D0X=D1X=D2X=D3X=?===
 ```
 
 ### margin (= 10)
@@ -384,21 +384,21 @@ data	==?=X=D0X=D1X=D2X=D3X=?===
 信号名称部分の幅を指定します。
 
 ```nohighlight
-long_signal_name	_~~~~__~~~~______~~___
+long_signal_name _~~~~__~~~~______~~___
 ```
 
 ```tchart2svg
-long_signal_name	_~~~~__~~~~______~~___
+long_signal_name _~~~~__~~~~______~~___
 ```
 
 ```nohighlight
 @w_caption 100
-long_signal_name	_~~~~__~~~~______~~___
+long_signal_name _~~~~__~~~~______~~___
 ```
 
 ```tchart2svg
 @w_caption 100
-long_signal_name	_~~~~__~~~~______~~___
+long_signal_name _~~~~__~~~~______~~___
 ```
 
 ### w_hold (= 10)
@@ -408,20 +408,20 @@ long_signal_name	_~~~~__~~~~______~~___
 
 ```nohighlight
 @w_hold 10
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock	~_~_~_~_~_~
+clock ~_~_~_~_~_~
 @w_hold 16
-clock	_~_~_~_~_~_~_~_
+clock _~_~_~_~_~_~_~_
 ```
 
 ```tchart2svg
 @w_hold 10
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_hold 22
-clock	~_~_~_~_~_~
+clock ~_~_~_~_~_~
 @w_hold 16
-clock	_~_~_~_~_~_~_~_
+clock _~_~_~_~_~_~_~_
 ```
 
 ### w_transient (= 2)
@@ -431,20 +431,20 @@ clock	_~_~_~_~_~_~_~_
 
 ```nohighlight
 @w_transient 0
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 ```
 
 ```tchart2svg
 @w_transient 0
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 2
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @w_transient 4
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 ```
 
 ### h_line (= 10)
@@ -452,16 +452,16 @@ clock	_~_~_~_~_~_~_~_~_~_~_~
 
 ```nohighlight
 @h_line 10
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @h_line 16
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 ```
 
 ```tchart2svg
 @h_line 10
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 @h_line 16
-clock	_~_~_~_~_~_~_~_~_~_~_~
+clock _~_~_~_~_~_~_~_~_~_~_~
 ```
 
 ### h_space (= 10)
@@ -469,19 +469,19 @@ clock	_~_~_~_~_~_~_~_~_~_~_~
 行間のスペースを指定します。
 
 ```nohighlight
-clock	_~_~_~_~_~_~_~_~_~_~_~
-data1	_~~~~__~~~~______~~___
+clock _~_~_~_~_~_~_~_~_~_~_~
+data1 _~~~~__~~~~______~~___
 @h_space 20
-data2	_~~~~__~~~~______~~___
-data3	_~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
+data3 _~~~~__~~~~______~~___
 ```
 
 ```tchart2svg
-clock	_~_~_~_~_~_~_~_~_~_~_~
-data1	_~~~~__~~~~______~~___
+clock _~_~_~_~_~_~_~_~_~_~_~
+data1 _~~~~__~~~~______~~___
 @h_space 20
-data2	_~~~~__~~~~______~~___
-data3	_~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
+data3 _~~~~__~~~~______~~___
 ```
 
 ### signal_style
@@ -492,15 +492,15 @@ data3	_~~~~__~~~~______~~___
 ```nohighlight
 stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none"
 
-data1	_~~~~__~~~~______~~___
+data1 _~~~~__~~~~______~~___
 @signal_style stroke-linecap="round" stroke-width="2" stroke="green" fill="none"
-data2	_~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
 ```
 
 ```tchart2svg
-data1	_~~~~__~~~~______~~___
+data1 _~~~~__~~~~______~~___
 @signal_style stroke-linecap="round" stroke-width="2" stroke="green" fill="none"
-data2	_~~~~__~~~~______~~___
+data2 _~~~~__~~~~______~~___
 ```
 
 ### grid (= off)
@@ -561,16 +561,16 @@ clk2 _~_~_~_~_~_~_~_~
 
 ```nohighlight
  @guide_style stroke-width="0.6" stroke="black"
- data1	_~~~~__|~~~~______~~___
+ data1  _~~~~__|~~~~______~~___
  @guide_style stroke-width="0.6" stroke="#0CC"
- data2	_~~~~__~~~~______|~~___
+ data2  _~~~~__~~~~______|~~___
 ```
 
 ```tchart2svg
 @guide_style stroke-width="0.6" stroke="black"
-data1	_~~~~__|~~~~______~~___
+data1 _~~~~__|~~~~______~~___
 @guide_style stroke-width="0.6" stroke="#0CC"
-data2	_~~~~__~~~~______|~~___
+data2 _~~~~__~~~~______|~~___
 ```
 
 ### highlight_style (= stroke="none" fill="#ff8")
@@ -578,15 +578,15 @@ data2	_~~~~__~~~~______|~~___
 ハイライト部分のスタイルを指定します。
 
 ```nohighlight
- data1	_~~~~__[~~~~]______~~___
+ data1  _~~~~__[~~~~]______~~___
  @highlight_style stroke="green" fill="#8f8" stroke-width="1"
- data2	_~~~~__~~~~______[~~]___
+ data2  _~~~~__~~~~______[~~]___
 ```
 
 ```tchart2svg
-data1	_~~~~__[~~~~]______~~___
+data1 _~~~~__[~~~~]______~~___
 @highlight_style stroke="green" fill="#8f8" stroke-width="1"
-data2	_~~~~__~~~~______[~~]___
+data2 _~~~~__~~~~______[~~]___
 ```
 
 ### notcare_style (= fill="#ccc")
@@ -595,16 +595,16 @@ data2	_~~~~__~~~~______[~~]___
 
 ```nohighlight
 clk     _~_~_~_~_~_~_~_~_~_~_~
-data1	====?=*========*=?======
+data1 ====?=*========*=?======
 @notcare_style stroke="none" fill="#8f8"
-data1	====?=*========*=?======
+data1 ====?=*========*=?======
 ```
 
 ```tchart2svg
 clk     _~_~_~_~_~_~_~_~_~_~_~
-data1	====?=*========*=?======
+data1 ====?=*========*=?======
 @notcare_style stroke="none" fill="#8f8"
-data1	====?=*========*=?======
+data1 ====?=*========*=?======
 ```
 
 ### caption_font (= fill="black" font-family="Helvetica")
@@ -617,14 +617,14 @@ data1	====?=*========*=?======
 clk     _~_~_~_~_~_~_~_~_~_~_~
 @caption_font fill="red" font-family="Helvetica"
 @signal_style stroke="red" fill="none"
-data	_~~~~______~~____~~~~~
+data  _~~~~______~~____~~~~~
 ```
 
 ```tchart2svg
 clk     _~_~_~_~_~_~_~_~_~_~_~
 @caption_font fill="red" font-family="Helvetica"
 @signal_style stroke="red" fill="none"
-data	_~~~~______~~____~~~~~
+data  _~~~~______~~____~~~~~
 ```
 
 ### signal_font (= fill="black" font-family="Helvetica")
@@ -634,13 +634,13 @@ data	_~~~~______~~____~~~~~
 ```nohighlight
 clk     _~_~_~_~_~_~_~_~
 @signal_font fill="red" font-family="Helvetica"
-data	==?=X=D0X=D1X=D2X=D3X=?===
+data    ==?=X=D0X=D1X=D2X=D3X=?===
 ```
 
 ```tchart2svg
 clk     _~_~_~_~_~_~_~_~
 @signal_font fill="red" font-family="Helvetica"
-data	==?=X=D0X=D1X=D2X=D3X=?===
+data    ==?=X=D0X=D1X=D2X=D3X=?===
 ```
 
 ### rotate (= 0)

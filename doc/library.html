@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://cdn.rawgit.com/andyferra/2554919/raw/10ce87fe71b23216e3075d5648b8b9e56f7758e1/github.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
-	
-	
-	<title>tchart-coffee ライブラリの使い方</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/andyferra/2554919/raw/10ce87fe71b23216e3075d5648b8b9e56f7758e1/github.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+  
+  
+  <title>tchart-coffee ライブラリの使い方</title>
 </head>
 <body>
 <p><a href="index.html">tchart-coffee の説明に戻る</a></p>
@@ -64,13 +64,15 @@ bready  ~~~~~~~~~~~~~~~~~~1~~
 
 <p>次のような形で markdown 中にソースコードを埋め込んだ物が、</p>
 
-<pre><code class="tchart2svg">   clock  _~_~_~_~_~
-   signal ___~~~~___
+<pre><code>```tchart2svg
+clock  _~_~_~_~_~
+signal ___~~~~___
+```
 </code></pre>
 
 <p>html に直したときに次のように変換されるのであれば、</p>
 
-<pre><code class="html"> &lt;pre&gt;&lt;code class=&quot;lang-tchart2svg&quot;&gt;
+<pre><code class="html">&lt;pre&gt;&lt;code class=&quot;lang-tchart2svg&quot;&gt;
 clock  _~_~_~_~_~
 signal ___~~~~___
 &lt;/code&gt;&lt;/pre&gt;
@@ -183,54 +185,54 @@ var height = tchart.height;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
 <script>
   hljs.configure({languages:[]})
-	hljs.initHighlightingOnLoad();
+  hljs.initHighlightingOnLoad();
 </script>
 
 <script>
 // add toc
 (function(){
-	var toc = '';
-	var id = [];
-	var nodes = document.getElementsByTagName('*');
-	for(var i=0; i<nodes.length; i++){
-		if(!/^h[1234]$/i.exec(nodes[i].tagName))
-			continue;
-		var level = nodes[i].tagName[1];
-		while(id.length<level) {
-			id.push(0);
-			toc += '<ul>'
-		}
-		while(id.length>level) {
-			id.pop();
-			toc += '</ul>'
-		}
-		id[level-1]++;
-		var id_s = id.join('-');
-		nodes[i].id = id_s;
+  var toc = '';
+  var id = [];
+  var nodes = document.getElementsByTagName('*');
+  for(var i=0; i<nodes.length; i++){
+    if(!/^h[1234]$/i.exec(nodes[i].tagName))
+      continue;
+    var level = nodes[i].tagName[1];
+    while(id.length<level) {
+      id.push(0);
+      toc += '<ul>'
+    }
+    while(id.length>level) {
+      id.pop();
+      toc += '</ul>'
+    }
+    id[level-1]++;
+    var id_s = id.join('-');
+    nodes[i].id = id_s;
 
-		toc += '<li><a href="#'+id_s+'">'+nodes[i].innerHTML+'</a>';
-	}
-	while(id.length>0) {
-		id.pop();
-		toc += '</ul>'
-	}
-	document.getElementById('toc').innerHTML = toc;
+    toc += '<li><a href="#'+id_s+'">'+nodes[i].innerHTML+'</a>';
+  }
+  while(id.length>0) {
+    id.pop();
+    toc += '</ul>'
+  }
+  document.getElementById('toc').innerHTML = toc;
 })();
 </script>
 
 <script>
 // format tcharts
 (function(){
-	var codes = document.getElementsByClassName('tchart2svg');
-	for (var i = codes.length-1; i >= 0; i--){
-		var code = codes[i];
-		var svg = TimingChart.format(code.textContent);
-		var div = document.createElement('div');
-		div.className = 'tchart';
-		div.innerHTML = svg;
-		var pre = code.parentNode;
-		pre.parentNode.replaceChild(div, pre);
-	}
+  var codes = document.getElementsByClassName('tchart2svg');
+  for (var i = codes.length-1; i >= 0; i--){
+    var code = codes[i];
+    var svg = TimingChart.format(code.textContent);
+    var div = document.createElement('div');
+    div.className = 'tchart';
+    div.innerHTML = svg;
+    var pre = code.parentNode;
+    pre.parentNode.replaceChild(div, pre);
+  }
 })();
 </script>
 

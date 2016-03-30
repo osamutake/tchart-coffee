@@ -55,15 +55,15 @@ bready  ~~~~~~~~~~~~~~~~~~1~~
 
 次のような形で markdown 中にソースコードを埋め込んだ物が、
 
-   ```tchart2svg
-   clock  _~_~_~_~_~
-   signal ___~~~~___
-   ```
+    ```tchart2svg
+    clock  _~_~_~_~_~
+    signal ___~~~~___
+    ```
 
 html に直したときに次のように変換されるのであれば、
 
- ```html
- <pre><code class="lang-tchart2svg">
+```html
+<pre><code class="lang-tchart2svg">
 clock  _~_~_~_~_~
 signal ___~~~~___
 </code></pre>
