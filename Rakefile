@@ -106,7 +106,7 @@ version = 'v' + JSON.load(File.read 'package.json')['version']
 require 'erb'
 require 'redcarpet'
 DOCS.each do |doc|
-  file doc => [doc.pathmap('src/doc/%n.md'), 'src/doc/layout.html.erb'] do |t|
+  file doc => [doc.pathmap('src/doc/%n.md'), 'src/doc/layout.html.erb', 'package.json'] do |t|
     puts "generating #{t.name} from #{t.prerequisites[0]}"
     src = File.read t.prerequisites[0]
     toc = Redcarpet::Markdown.new(

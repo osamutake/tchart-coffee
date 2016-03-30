@@ -1,6 +1,6 @@
 {
   "name": "tchart-coffee",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/osamutake/tchart-coffee",
   "description": "Online timing chart formatter that converts a source code of a timing chart into SVG graphics on browsers.",
   "main": "./index.js",
