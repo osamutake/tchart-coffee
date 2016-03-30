@@ -1,9 +1,11 @@
 # tchart-coffee
 
-Online timing chart formatter that converts a source code of a timing chart into SVG graphics on browsers.
+Online timing chart formatter that converts a source code of a timing chart into SVG graphics on browsers.  
+テキストで書かれたタイミングチャートをブラウザ上でSVGに変換します。
 
 It includes a javascript library and an online visual editor,
-which convert a source text like the following
+which convert a source text like the following:  
+javascriptのライブラリとチャートソースエディタを含んでおり、次のようなソースコードを
 
 ```nohighlight
 aclk    ~_~_~_~_~_~_~_~_~_~_
@@ -18,9 +20,11 @@ bvalid  ____~~~~__~~____~~__
 bready  ~~~~~~~~~~~~~~~~~~1~~
 ```
 
-into a timing chart like:
+into a timing chart like:  
+次のようなチャートに変換できます。
 
 ![example.svg](https://cdn.rawgit.com/osamutake/tchart-coffee/master/doc/example.svg)
 
 
-[The detailed description in Japanese is available.](https://cdn.rawgit.com/osamutake/tchart-coffee/master/doc/index.html)
+[The detailed description in Japanese is available.](https://cdn.rawgit.com/osamutake/tchart-coffee/master/doc/index.html)  
+[日本語の詳しい説明はこちらです](https://cdn.rawgit.com/osamutake/tchart-coffee/master/doc/index.html)
