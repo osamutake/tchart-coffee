@@ -9,6 +9,9 @@
   update = function() {
     var source, svg;
     source = $('#source').val();
+    if ($('#grid').prop('checked')) {
+      source = "@grid on\n" + source;
+    }
     if (lastSource === source) {
       return;
     }
@@ -37,6 +40,9 @@
 
   $(function() {
     setInterval(update, 100);
+    $('#grid').on('click', function() {
+      return update();
+    });
     $('#as_svg').on('click', function() {
       var blob;
       update();

@@ -404,3 +404,4 @@ if module?.exports?
   module.exports = TimingChart
 else
   this.TimingChart = TimingChart
+  

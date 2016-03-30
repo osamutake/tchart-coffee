@@ -2,6 +2,7 @@ lastSource = ''
 lastChart = null
 update = ->
   source = $('#source').val()
+  source = "@grid on\n" + source if $('#grid').prop('checked')
   return if lastSource==source
   lastSource = source
 
@@ -25,6 +26,9 @@ callbackWithCanvas = (f)->
 
 $ ->
   setInterval(update, 100)
+
+  $('#grid').on 'click', ->
+    update()
 
   $('#as_svg').on 'click', ->
     update()
