@@ -8,9 +8,9 @@
 
   update = function() {
     var source, svg;
-    source = $('#source').val();
+    source = $('#source').val().replace(/\s+$/, '');
     if ($('#grid').prop('checked')) {
-      source = "@grid on\n" + source;
+      source += "\n@grid on\n";
     }
     if (lastSource === source) {
       return;

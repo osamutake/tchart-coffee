@@ -1,8 +1,8 @@
 lastSource = ''
 lastChart = null
 update = ->
-  source = $('#source').val()
-  source = "@grid on\n" + source if $('#grid').prop('checked')
+  source = $('#source').val().replace(/\s+$/, '')
+  source += "\n@grid on\n" if $('#grid').prop('checked')
   return if lastSource==source
   lastSource = source
 
