@@ -253,6 +253,11 @@ class TimeLine
 
     svg.join("")
 
+isNumeric = (obj)->
+  type = typeof obj
+  ( type == "number" or type == "string" ) and
+         !isNaN( obj - parseFloat( obj ) )
+
 class TimingChart
   @config:
     scale:          1.0
@@ -322,25 +327,27 @@ class TimingChart
     </svg>
     """
 
+  processConfiguration: (name, value)->
+    if name =='grid'
+      if value == 'on'
+        @setupGrid()
+      else if value == 'off'
+        @grid = null
+      else
+        throw new SyntaxError("Illegal Line: #{line}")
+    else if isNumeric(@config[name])
+      @config[name] = Number(value)
+    else
+      @config[name] = value
+    return
+
   parseLine: (line)->
     return if line[0] == '#'  #### comment
 
-    isNumeric = (obj)->
-      type = typeof obj
-      ( type == "number" or type == "string" ) and
-             !isNaN( obj - parseFloat( obj ) )
-
     if line[0]=='@'           #### configuration
-      if !(matches = /^@([^\s]+)[\s]+([^\s].*)$/.exec(line))
+      if !(matches = /^@([^\s]+)\s+([^\s].*?)\s*$/.exec(line))
         throw new SyntaxError("Illegal Line: #{line}")
-      if matches[1]=='grid'
-        unless /on|off/.exec matches[2]
-          throw new SyntaxError("Illegal Line: #{line}")
-        @setupGrid()
-      else if isNumeric(@config[matches[1]])
-        @config[matches[1]] = Number(matches[2])
-      else
-        @config[matches[1]] = matches[2]
+      @processConfiguration(matches[1], matches[2])
       return
 
     if line[0] == '%'         #### free string
