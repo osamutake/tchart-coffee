@@ -90,6 +90,35 @@ signal ___~~_____
 
 <p>の形です。</p>
 
+<p>あるいは、</p>
+
+<pre><code class="nohighlight">&quot;信 号 名&quot; [空白] タイミング定義
+</code></pre>
+
+<p>や</p>
+
+<pre><code class="nohighlight">&#39;信 号 名&#39; [空白] タイミング定義
+</code></pre>
+
+<p>とすることで、信号名に空白を含めることができます。</p>
+
+<p>&#39;  &#39; や &quot;  &quot; でくくられた中に &#39; や &quot; を記述したいときには、
+&#39;&#39; や &quot;&quot; のように、２つ重ねて書きます。</p>
+
+<pre><code class="nohighlight">clk1       _~_~_~_~_~
+&quot;clk 2&quot;    __~~__~~__
+&#39;clk 3&#39;    ~__~~__~~_
+&quot;clk&quot;&quot;4&quot;   ~_~_~_~_~_
+&#39;clk&#39;&#39;5&#39;   ~~__~~__~~
+</code></pre>
+
+<pre><code class="tchart2svg">clk1       _~_~_~_~_~
+&quot;clk 2&quot;    __~~__~~__
+&#39;clk 3&#39;    ~__~~__~~_
+&quot;clk&quot;&quot;4&quot;   ~_~_~_~_~_
+&#39;clk&#39;&#39;5&#39;   ~~__~~__~~
+</code></pre>
+
 <h2>チャート文法(タイミング定義)</h2>
 
 <h3>_ と ~ で 0 と 1 を表します。</h3>
@@ -142,18 +171,18 @@ output ---=D0=X=D1X=D2X=D3X=D4-----
 
 <h3>&quot; を含めたければ &quot;&quot; のように重ねます</h3>
 
-<p>スペースも入れられます</p>
+<p>スペースも入れられます。同様に &#39; で括ることもできます。</p>
 
-<pre><code class="nohighlight">&quot;=&quot;   -======&quot;A = B&quot;-
-&quot;     -======&quot; &quot;&quot;A&quot;&quot; = &quot;&quot;B&quot;&quot; &quot;-
+<pre><code class="nohighlight">&#39;&quot;=&quot;&#39; -======&quot;A = B&quot;-
+&#39;&quot;&#39;   -======&quot; &quot;&quot;A&quot;&quot; = &quot;&quot;B&quot;&quot; &quot;-
 A     -======A-
-space -======&quot;A      &quot;-
+space -======&#39;A      &#39;-
 </code></pre>
 
-<pre><code class="tchart2svg">&quot;=&quot;   -======&quot;A = B&quot;-
-&quot;     -======&quot; &quot;&quot;A&quot;&quot; = &quot;&quot;B&quot;&quot; &quot;-
+<pre><code class="tchart2svg">&#39;&quot;=&quot;&#39; -======&quot;A = B&quot;-
+&#39;&quot;&#39;   -======&quot; &quot;&quot;A&quot;&quot; = &quot;&quot;B&quot;&quot; &quot;-
 A     -======A-
-space -======&quot;A      &quot;-
+space -======&#39;A      &#39;-
 </code></pre>
 
 <h3>右寄せ、左寄せ</h3>
