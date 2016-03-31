@@ -365,11 +365,19 @@ class TimingChart
     line= line.replace(/\s*$/, '')
     return if line==''        #### empty line
 
-    if !(matches = /^([^\s]+)[\s]+([^\s].*)$/.exec(line))
+    #### timeline
+    if matches = /^"((?:[^"]|"")+)"\s+([^\s].*)$/.exec(line)
+      @formatCaption matches[1].replace(/""/, '"')
+      @formatTimeline matches[2]
+    else if matches = /^'((?:[^']|'')+)'\s+([^\s].*)$/.exec(line)
+      @formatCaption matches[1].replace(/''/, "'")
+      @formatTimeline matches[2]
+    else if matches = /^([^\s]+)\s+([^\s].*)$/.exec(line)
+      @formatCaption matches[1]
+      @formatTimeline matches[2]
+    else
       throw new SyntaxError("Illegal Line: #{line}")
 
-    @formatCaption(matches[1])
-    @formatTimeline(matches[2])
     @y+= @config.h_line
 
   formatCaption: (caption)->
