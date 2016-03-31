@@ -1,0 +1,5 @@
+@w_transient 4
+clk        _~_~_~_~_~_~_~
+rising     ___==/=/=~~~~~
+falling    ~~~==\=\=_____
+transition ___=D0=*=D1*=D2*=D3___

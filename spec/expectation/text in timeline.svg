@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="358.8px" height="91px" viewBox="-10 -10 276 70" version="1.1">
+<![CDATA[
+clk    _~_~_~_~_~_~_~_~_~
+enable ___~~~~~~~~~~_____
+output ---=D0=X=D1X=D2X=D3X=D4-----
+]]>
+<g>
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,10H52M52,10L54,0M54,0H64M64,0L66,10M66,10H76M76,10L78,0M78,0H88M88,0L90,10M90,10H100M100,10L102,0M102,0H112M112,0L114,10M114,10H124M124,10L126,0M126,0H136M136,0L138,10M138,10H148M148,10L150,0M150,0H160M160,0L162,10M162,10H172M172,10L174,0M174,0H184M184,0L186,10M186,10H196M196,10L198,0M198,0H208M208,0L210,10M210,10H220M220,10L222,0M222,0H232M232,0L234,10M234,10H244M244,10L246,0M246,0H256" />
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">enable</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,30H52M52,30H54M54,30H64M64,30H66M66,30H76M76,30L78,20M78,20H88M88,20H90M90,20H100M100,20H102M102,20H112M112,20H114M114,20H124M124,20H126M126,20H136M136,20H138M138,20H148M148,20H150M150,20H160M160,20H162M162,20H172M172,20H174M174,20H184M184,20H186M186,20H196M196,20L198,30M198,30H208M208,30H210M210,30H220M220,30H222M222,30H232M232,30H234M234,30H244M244,30H246M246,30H256" />
+
+<text x="35" y="48.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">output</text>
+<text x="89" y="48.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D0</text>
+<text x="113" y="48.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D1</text>
+<text x="137" y="48.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D2</text>
+<text x="161" y="48.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D3</text>
+<text x="185" y="48.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">D4</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,45H52M52,45H54M54,45H64M64,45H66M66,45H76M76,45L78,40M76,45L78,50M78,50H88M78,40H88M88,40H90M88,50H90M90,50H100M90,40H100M100,40L102,50M100,50L102,40M102,50H112M102,40H112M112,40H114M112,50H114M114,50H124M114,40H124M124,40L126,50M124,50L126,40M126,50H136M126,40H136M136,40H138M136,50H138M138,50H148M138,40H148M148,40L150,50M148,50L150,40M150,50H160M150,40H160M160,40H162M160,50H162M162,50H172M162,40H172M172,40L174,50M172,50L174,40M174,50H184M174,40H184M184,40H186M184,50H186M186,50H196M186,40H196M196,40L198,45M196,50L198,45M198,45H208M208,45H210M210,45H220M220,45H222M222,45H232M232,45H234M234,45H244M244,45H246M246,45H256" />
+
+</g>
+</svg>

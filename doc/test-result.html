@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>tchart-coffee: Test Expectations</title>
+  <style>
+  h1 {
+    color: white;
+    padding: 8px;
+  }
+  h1.success {
+    background: green;
+  }
+  h1.fail {
+    background: red;
+  }
+  h2 {
+    color: red;
+    border: 1px red solid;
+    font-weight: bold;
+    padding: 4px;
+  }
+  div.row {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+  }
+  div.row > * {
+    flex: auto;
+    display: inline-block;
+  }
+  div.row > div:first-child {
+    background: #ffd;
+    font-family: monospace;
+    line-height: 1.4;
+    padding: 4px;
+    margin: 8px 8px 8px 0px;
+  }
+  div.row > div:not(:first-child) {
+    padding: 4px;
+    margin: 8px 8px 8px 0px;
+  }
+  div.row > div:nth-child(2):before {
+    position: absolute;
+    content: 'Expected';
+    color: #dfd;
+    font-size: 50px;
+    z-index: -1;
+  }
+  div.row > div:nth-child(3):before {
+    position: absolute;
+    content: 'Result';
+    color: #fdd;
+    font-size: 50px;
+    z-index: -1;
+  }
+  </style>
+</head>
+<body>
+<h1 class="success">Test Passed!</h1>
+</body>
+</html>

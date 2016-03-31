@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="265.2px" height="91px" viewBox="-10 -10 204 70" version="1.1">
+<![CDATA[
+clk    _~_~_~_~_~_~
+data   =?==XDATA=====X=?=
+valid  ___~~~~~~___
+]]>
+<g>
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,10H52M52,10L54,0M54,0H64M64,0L66,10M66,10H76M76,10L78,0M78,0H88M88,0L90,10M90,10H100M100,10L102,0M102,0H112M112,0L114,10M114,10H124M124,10L126,0M126,0H136M136,0L138,10M138,10H148M148,10L150,0M150,0H160M160,0L162,10M162,10H172M172,10L174,0M174,0H184" />
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">data</text>
+
+<path stroke="none" d="M42,20H76L77,25L76,30H42Z" fill="#ccc"/><text x="59" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<text x="113" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">DATA</text>
+
+<path stroke="none" d="M150,20H184L184,30H150L149,25Z" fill="#ccc"/><text x="167" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">?</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,30H52M42,20H52M52,20H54M52,30H54M54,30H64M54,20H64M64,20H66M64,30H66M66,30H76M66,20H76M76,20L78,30M76,30L78,20M78,30H88M78,20H88M88,20H90M88,30H90M90,30H100M90,20H100M100,20H102M100,30H102M102,30H112M102,20H112M112,20H114M112,30H114M114,30H124M114,20H124M124,20H126M124,30H126M126,30H136M126,20H136M136,20H138M136,30H138M138,30H148M138,20H148M148,20L150,30M148,30L150,20M150,30H160M150,20H160M160,20H162M160,30H162M162,30H172M162,20H172M172,20H174M172,30H174M174,30H184M174,20H184" />
+
+<text x="35" y="48.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">valid</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,50H52M52,50H54M54,50H64M64,50H66M66,50H76M76,50L78,40M78,40H88M88,40H90M90,40H100M100,40H102M102,40H112M112,40H114M114,40H124M124,40H126M126,40H136M136,40H138M138,40H148M148,40L150,50M150,50H160M160,50H162M162,50H172M172,50H174M174,50H184" />
+
+</g>
+</svg>

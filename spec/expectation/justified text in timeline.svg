@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="202.8px" height="91px" viewBox="-10 -10 156 70" version="1.1">
+<![CDATA[
+left   -======"_<_DATA"-
+middle -======DATA-
+right  -======"_>_DATA"-
+]]>
+<g>
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">left</text>
+<text x="54" y="8.5" text-anchor="start" font-size="10" fill="black" font-family="Helvetica">DATA</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,5H52M52,5L54,0M52,5L54,10M54,10H64M54,0H64M64,0H66M64,10H66M66,10H76M66,0H76M76,0H78M76,10H78M78,10H88M78,0H88M88,0H90M88,10H90M90,10H100M90,0H100M100,0H102M100,10H102M102,10H112M102,0H112M112,0H114M112,10H114M114,10H124M114,0H124M124,0L126,5M124,10L126,5M126,5H136" />
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">middle</text>
+<text x="89" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">DATA</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,25H52M52,25L54,20M52,25L54,30M54,30H64M54,20H64M64,20H66M64,30H66M66,30H76M66,20H76M76,20H78M76,30H78M78,30H88M78,20H88M88,20H90M88,30H90M90,30H100M90,20H100M100,20H102M100,30H102M102,30H112M102,20H112M112,20H114M112,30H114M114,30H124M114,20H124M124,20L126,25M124,30L126,25M126,25H136" />
+
+<text x="35" y="48.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">right</text>
+<text x="124" y="48.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">DATA</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,45H52M52,45L54,40M52,45L54,50M54,50H64M54,40H64M64,40H66M64,50H66M66,50H76M66,40H76M76,40H78M76,50H78M78,50H88M78,40H88M88,40H90M88,50H90M90,50H100M90,40H100M100,40H102M100,50H102M102,50H112M102,40H112M112,40H114M112,50H114M114,50H124M114,40H124M124,40L126,45M124,50L126,45M126,45H136" />
+
+</g>
+</svg>

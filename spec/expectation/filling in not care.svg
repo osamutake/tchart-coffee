@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="572px" height="65px" viewBox="-10 -10 440 50" version="1.1">
+<![CDATA[
+@h_line 30
+@h_skip 20
+@w_transient 5
+@w_caption 60
+test =/=?\=\=?/=X=?X=*?=*=X=?-=?= =?X
+]]>
+<g>
+<text x="55" y="28.5" text-anchor="end" font-size="30" fill="black" font-family="Helvetica">test</text>
+
+<path stroke="none" d="M80,0H105L110,30L105,30H80H75Z" fill="#ccc"/><text x="92.5" y="28.5" text-anchor="middle" font-size="30" fill="black" font-family="Helvetica">?</text>
+
+<path stroke="none" d="M140,0H165H170L165,30H140L135,0Z" fill="#ccc"/><text x="152.5" y="28.5" text-anchor="middle" font-size="30" fill="black" font-family="Helvetica">?</text>
+
+<path stroke="none" d="M200,0H225L227.5,15L225,30H200L197.5,15Z" fill="#ccc"/><text x="212.5" y="28.5" text-anchor="middle" font-size="30" fill="black" font-family="Helvetica">?</text>
+
+<path stroke="none" d="M260,0H285L287.5,15L285,30H260L257.5,15Z" fill="#ccc"/><text x="272.5" y="28.5" text-anchor="middle" font-size="30" fill="black" font-family="Helvetica">?</text>
+
+<path stroke="none" d="M320,0H345L350,15L345,30H320L317.5,15Z" fill="#ccc"/><text x="332.5" y="28.5" text-anchor="middle" font-size="30" fill="black" font-family="Helvetica">?</text>
+
+<path stroke="none" d="M365,0H405L407.5,15L405,30H365L360,15Z" fill="#ccc"/><text x="385" y="28.5" text-anchor="middle" font-size="30" fill="black" font-family="Helvetica">?</text>
+
+<path stroke="none" d="M365,0H405L407.5,15L405,30H365L360,15Z" fill="#ccc"/><text x="385" y="28.5" text-anchor="middle" font-size="30" fill="black" font-family="Helvetica">?</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M65,30H75M65,0H75M75,0H80M75,30H80M75,30L80,0M80,30H90M80,0H90M90,0H95M90,30H95M95,30H105M95,0H105M105,0H110M105,30H110M105,0L110,30M110,30H120M110,0H120M120,0H125M120,30H125M125,30H135M125,0H135M135,0H140M135,30H140M135,0L140,30M140,30H150M140,0H150M150,0H155M150,30H155M155,30H165M155,0H165M165,0H170M165,30H170M165,30L170,0M170,30H180M170,0H180M180,0H185M180,30H185M185,30H195M185,0H195M195,0L200,30M195,30L200,0M200,30H210M200,0H210M210,0H215M210,30H215M215,30H225M215,0H225M225,0L230,30M225,30L230,0M230,30H240M230,0H240M240,0H245M240,30H245M245,30H255M245,0H255M255,0H260M255,30H260M255,0L260,30M255,30L260,0M260,30H270M260,0H270M270,0H275M270,30H275M275,30H285M275,0H285M285,0H290M285,30H290M285,0L290,30M285,30L290,0M290,30H300M290,0H300M300,0H305M300,30H305M305,30H315M305,0H315M315,0L320,30M315,30L320,0M320,30H330M320,0H330M330,0H335M330,30H335M335,30H345M335,0H345M345,0L350,15M345,30L350,15M350,15H360M360,15L365,0M360,15L365,30M365,30H375M365,0H375M375,0H380M375,30H380M380,30H390M380,0H390M390,0H395M390,30H395M395,30H405M395,0H405M405,0L410,30M405,30L410,0M410,30H420M410,0H420" />
+
+</g>
+</svg>

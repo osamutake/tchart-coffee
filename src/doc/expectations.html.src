@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>tchart-coffee: Test Expectations</title>
+  <style>
+  h2 {
+    background: blue;
+    color: white;
+    font-weight: bold;
+    padding: 4px;
+  }
+  div.row {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+  }
+  div.row > * {
+    flex: auto;
+    display: inline-block;
+  }
+  div.row > div:first-child {
+    background: #ffd;
+    font-family: monospace;
+    line-height: 1.4;
+    padding: 4px;
+    margin: 8px 8px 8px 0px;
+  }
+  div.row > div:not(:first-child) {
+    padding: 4px;
+    margin: 8px 8px 8px 0px;
+  }
+  </style>
+</head>
+<body>
+<%=result%>
+</body>
+</html>

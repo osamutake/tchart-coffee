@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="260px" height="65px" viewBox="-10 -10 200 50" version="1.1">
+<![CDATA[
+@w_transient 0
+clk _~_~_~_~_~_~_~
+data ___|~~~~|_______
+]]>
+<g>
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M40,10H50M50,10V0M50,0H60M60,0V10M60,10H70M70,10V0M70,0H80M80,0V10M80,10H90M90,10V0M90,0H100M100,0V10M100,10H110M110,10V0M110,0H120M120,0V10M120,10H130M130,10V0M130,0H140M140,0V10M140,10H150M150,10V0M150,0H160M160,0V10M160,10H170M170,10V0M170,0H180" />
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">data</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M40,30H50M50,30M50,30H60M60,30M60,30H70M70,30V20M70,20H80M80,20M80,20H90M90,20M90,20H100M100,20M100,20H110M110,20V30M110,30H120M120,30M120,30H130M130,30M130,30H140M140,30M140,30H150M150,30M150,30H160M160,30M160,30H170M170,30M170,30H180" />
+
+<path d="M70,-5V35" stroke-width="0.6" stroke="red" />
+<path d="M110,-5V35" stroke-width="0.6" stroke="red" />
+</g>
+</svg>

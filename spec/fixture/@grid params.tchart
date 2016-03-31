@@ -1,0 +1,7 @@
+clk1 _~_~_~_~_~_~_~_~_~_~
+@w_hold 13
+@grid on
+@grid_offset 1
+@grid_step 2
+@grid_style stroke-width="0.3" stroke="#0f0"
+clk2 _~_~_~_~_~_~_~_~

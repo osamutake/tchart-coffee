@@ -1,0 +1,5 @@
+@scale 1.5
+clk     _~_~_~_~_~_~_~
+@caption_font fill="red" font-family="Times"
+@signal_style stroke="red" fill="none"
+data  _~~~~______~~_

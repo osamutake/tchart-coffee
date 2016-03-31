@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="234px" height="143px" viewBox="-10 -10 180 110" version="1.1">
+<![CDATA[
+clk1       _~_~_~_~_~
+"clk 2"    __~~__~~__
+'clk 3'    ~__~~__~~_
+"clk""4"   ~_~_~_~_~_
+'clk''5'   ~~__~~__~~
+]]>
+<g>
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk1</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,10H52M52,10L54,0M54,0H64M64,0L66,10M66,10H76M76,10L78,0M78,0H88M88,0L90,10M90,10H100M100,10L102,0M102,0H112M112,0L114,10M114,10H124M124,10L126,0M126,0H136M136,0L138,10M138,10H148M148,10L150,0M150,0H160" />
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk 2</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,30H52M52,30H54M54,30H64M64,30L66,20M66,20H76M76,20H78M78,20H88M88,20L90,30M90,30H100M100,30H102M102,30H112M112,30L114,20M114,20H124M124,20H126M126,20H136M136,20L138,30M138,30H148M148,30H150M150,30H160" />
+
+<text x="35" y="48.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk 3</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,40H52M52,40L54,50M54,50H64M64,50H66M66,50H76M76,50L78,40M78,40H88M88,40H90M90,40H100M100,40L102,50M102,50H112M112,50H114M114,50H124M124,50L126,40M126,40H136M136,40H138M138,40H148M148,40L150,50M150,50H160" />
+
+<text x="35" y="68.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk&quot;4</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,60H52M52,60L54,70M54,70H64M64,70L66,60M66,60H76M76,60L78,70M78,70H88M88,70L90,60M90,60H100M100,60L102,70M102,70H112M112,70L114,60M114,60H124M124,60L126,70M126,70H136M136,70L138,60M138,60H148M148,60L150,70M150,70H160" />
+
+<text x="35" y="88.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk'5</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,80H52M52,80H54M54,80H64M64,80L66,90M66,90H76M76,90H78M78,90H88M88,90L90,80M90,80H100M100,80H102M102,80H112M112,80L114,90M114,90H124M124,90H126M126,90H136M136,90L138,80M138,80H148M148,80H150M150,80H160" />
+
+</g>
+</svg>

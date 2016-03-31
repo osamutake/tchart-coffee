@@ -1,0 +1,4 @@
+@guide_style stroke-width="0.6" stroke="black"
+data1  _~~~~__|~~~~______~~___
+@guide_style stroke-width="0.6" stroke="#0CC"
+data2  _~~~~__~~~~______|~~___

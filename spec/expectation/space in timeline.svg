@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="358.8px" height="65px" viewBox="-10 -10 276 50" version="1.1">
+<![CDATA[
+clk    _~_~_~_:...:~_~_~_~_~
+data   ___~~~~:...:~~____~~_
+]]>
+<g>
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk</text>
+<text x="137" y="8.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">...</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,10H52M52,10L54,0M54,0H64M64,0L66,10M66,10H76M76,10L78,0M78,0H88M88,0L90,10M90,10H100M100,10L102,0M102,0H112M112,0L114,10M114,10H124M150,0H160M160,0L162,10M162,10H172M172,10L174,0M174,0H184M184,0L186,10M186,10H196M196,10L198,0M198,0H208M208,0L210,10M210,10H220M220,10L222,0M222,0H232M232,0L234,10M234,10H244M244,10L246,0M246,0H256" />
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">data</text>
+<text x="137" y="28.5" text-anchor="middle" font-size="10" fill="black" font-family="Helvetica">...</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,30H52M52,30H54M54,30H64M64,30H66M66,30H76M76,30L78,20M78,20H88M88,20H90M90,20H100M100,20H102M102,20H112M112,20H114M114,20H124M150,20H160M160,20H162M162,20H172M172,20L174,30M174,30H184M184,30H186M186,30H196M196,30H198M198,30H208M208,30H210M210,30H220M220,30L222,20M222,20H232M232,20H234M234,20H244M244,20L246,30M246,30H256" />
+
+</g>
+</svg>
