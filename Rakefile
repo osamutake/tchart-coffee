@@ -1,85 +1,33 @@
 require 'rake/clean'
 
-task :default => [
-    '.git/hooks/pre-commit', :obj, 'lib/tchart.min.js',
-    'bin/editor.html', 'bin/editor-offline.html', :doc, :test
+uglify = "node_modules/.bin/uglifyjs"
+
+# =========================================== :default = :all
+
+task :default => :all
+
+task :all => [
+    :preparation,
+    :lib,
+    :editor,
+    :doc,
+    :test
 ]
 
-directory 'spec/expectation'
+# =========================================== :preparation
 
-task 'test:expectation' => 'spec/expectation' do
-  result = ''
-  Dir.glob "spec/fixture/*.tchart" do |file|
-    src = File.read file
-    svg = `node -e "console.log(require('./lib/tchart.js').format(require('fs').readFileSync('#{file}').toString()))"`
-    File.write file.pathmap('spec/expectation/%n.svg'), svg
-    result += "<h2>#{file.pathmap('%n')}</h2>\n" +
-              "<div class='row'><div>#{src.gsub(/\n/,'<br>')}</div>" +
-              "<div>#{svg}</div></div>\n"
-  end
-
-  html = File.read 'src/doc/expectations.html.src'
-  File.write 'doc/expectations.html', html.sub('<%=result%>', result)
-end
-
-task :test => 'doc/test-result.html'
-
-file 'doc/test-result.html' => 'lib/tchart.min.js' do
-  RED_COLOR="\033[31m"
-  GREEN_COLOR="\033[32m"
-  RST_COLOR="\033[0m"
-
-  result = ''
-  success = 0
-  fail = 0
-  Dir.glob "spec/fixture/*.tchart" do |file|
-    src = File.read file
-    svg = `node -e "console.log(require('./lib/tchart.min.js').format(require('fs').readFileSync('#{file}').toString()))"`
-    expect_file = file.pathmap('spec/expectation/%n.svg')
-    unless File.exist? expect_file
-      puts "#{RED_COLOR}File not found: '#{expect_file}'"
-      puts
-      puts "You may need to run 'rake test:expectation'.#{RST_COLOR}"
-      exit 1
-    end
-    expect = File.read file.pathmap('spec/expectation/%n.svg')
-    if svg == expect
-      success += 1
-    else
-      fail += 1
-      result += "<h2>#{file.pathmap('%n')}</h2>\n" +
-                "<div class='row'><div>#{src.gsub(/\n/,'<br>')}</div>" +
-                "<div>#{expect}</div><div>#{svg}</div></div>\n"
-      puts "#{RED_COLOR}Test failed:#{RST_COLOR} '#{file}'"
-    end
-  end
-  puts "#{fail==0 ? GREEN_COLOR : RED_COLOR}#{success+fail} tests, #{fail} failures#{RST_COLOR}"
-
-  html = File.read 'src/doc/test-result.html.src'
-  if fail == 0
-    File.write 'doc/test-result.html', html.sub('<%=result%>', '<h1 class="success">Test Passed!</h1>')
-  else
-    File.write 'doc/test-result.html',
-      '<h1 class="fail">Test Failed!</h1>' +
-      "<p>If you don't see any problems below, run 'rake test:expectation' to update the expected result." +
-      html.sub('<%=result%>', result)
-    puts
-    puts "#{RED_COLOR}Check result in 'doc/test-result.html'."
-    puts "If you don't see any problems there, run 'rake test:expectation' to update the expected result.\n#{RST_COLOR}"
-    exit 1
-  end
-
-  sh 'node_modules/.bin/jasmine-node --coffee spec'
-end
-
-directory 'obj'
-
-uglify = "node_modules/.bin/uglifyjs"
+task :preparation => ['.git/hooks/pre-commit', :obj]
 
 file '.git/hooks/pre-commit' do
   sh 'echo "#!/bin/sh\\nrake\\n" > .git/hooks/pre-commit'
   sh 'chmod u+x .git/hooks/pre-commit'
 end
+
+directory 'obj'
+
+# =========================================== :lib
+
+task :lib => 'lib/tchart.min.js'
 
 file 'lib/tchart.min.js' => 'lib/tchart.js' do |t|
   src = t.prerequisites[0]
@@ -101,6 +49,10 @@ file 'lib/tchart.js' => 'src/tchart.coffee' do |t|
   out = t.name
   sh "coffee -cm -o lib #{src}"
 end
+
+# =========================================== :editor
+
+task :editor => [:lib, 'bin/editor.html', 'bin/editor-offline.html']
 
 file 'bin/editor.html' => [
   'src/editor/editor.html.src', 'bin/editor.css', 'bin/editor.js'] do |t|
@@ -161,7 +113,7 @@ file 'obj/canvas-toBlob.js' do
   sh "wget https://rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js -O obj/canvas-toBlob.js"
 end
 
-###################
+# =========================================== :doc
 
 DOCS = FileList['src/doc/*.md'].pathmap('doc/%n.html')
 task :doc => DOCS + ['doc/example.svg']
@@ -189,3 +141,76 @@ DOCS.each do |doc|
     File.write t.name, html
   end
 end
+
+# =========================================== :test
+
+task :test => 'doc/test-result.html'
+
+file 'doc/test-result.html' => 'lib/tchart.min.js' do
+  RED_COLOR="\033[31m"
+  GREEN_COLOR="\033[32m"
+  RST_COLOR="\033[0m"
+
+  result = ''
+  success = 0
+  fail = 0
+  Dir.glob "spec/fixture/*.tchart" do |file|
+    src = File.read file
+    svg = `node -e "console.log(require('./lib/tchart.min.js').format(require('fs').readFileSync('#{file}').toString()))"`
+    expect_file = file.pathmap('spec/expectation/%n.svg')
+    unless File.exist? expect_file
+      puts "#{RED_COLOR}File not found: '#{expect_file}'"
+      puts
+      puts "You may need to run 'rake test:expectation'.#{RST_COLOR}"
+      exit 1
+    end
+    expect = File.read file.pathmap('spec/expectation/%n.svg')
+    if svg == expect
+      success += 1
+    else
+      fail += 1
+      result += "<h2>#{file.pathmap('%n')}</h2>\n" +
+                "<div class='row'><div>#{src.gsub(/\n/,'<br>')}</div>" +
+                "<div>#{expect}</div><div>#{svg}</div></div>\n"
+      puts "#{RED_COLOR}Test failed:#{RST_COLOR} '#{file}'"
+    end
+  end
+  puts "#{fail==0 ? GREEN_COLOR : RED_COLOR}#{success+fail} tests, #{fail} failures#{RST_COLOR}"
+
+  html = File.read 'src/doc/test-result.html.src'
+  if fail == 0
+    File.write 'doc/test-result.html', html.sub('<%=result%>', '<h1 class="success">Test Passed!</h1>')
+  else
+    File.write 'doc/test-result.html',
+      '<h1 class="fail">Test Failed!</h1>' +
+      "<p>If you don't see any problems below, run 'rake test:expectation' to update the expected result." +
+      html.sub('<%=result%>', result)
+    puts
+    puts "#{RED_COLOR}Check result in 'doc/test-result.html'."
+    puts "If you don't see any problems there, run 'rake test:expectation' to update the expected result.\n#{RST_COLOR}"
+    exit 1
+  end
+
+  sh 'node_modules/.bin/jasmine-node --coffee spec'
+end
+
+# =========================================== 'test:expectation'
+
+task 'test:expectation' => 'doc/expectations.html'
+
+task 'doc/expectations.html' => 'spec/expectation' do
+  result = ''
+  Dir.glob "spec/fixture/*.tchart" do |file|
+    src = File.read file
+    svg = `node -e "console.log(require('./lib/tchart.js').format(require('fs').readFileSync('#{file}').toString()))"`
+    File.write file.pathmap('spec/expectation/%n.svg'), svg
+    result += "<h2>#{file.pathmap('%n')}</h2>\n" +
+              "<div class='row'><div>#{src.gsub(/\n/,'<br>')}</div>" +
+              "<div>#{svg}</div></div>\n"
+  end
+
+  html = File.read 'src/doc/expectations.html.src'
+  File.write 'doc/expectations.html', html.sub('<%=result%>', result)
+end
+
+directory 'spec/expectation'
