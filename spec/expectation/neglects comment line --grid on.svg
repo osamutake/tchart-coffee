@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="234px" height="65px" viewBox="-10 -10 180 50" version="1.1">
+<![CDATA[
+# This line will not appear in the chart
+clk    _~_~_~_~_~
+signal ___~~~~___
+]]>
+<g>
+<path d="M149,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M137,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M125,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M113,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M101,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M89,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M77,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M65,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M53,-5V35" stroke-width="0.3" stroke="#ccc" />
+<path d="M41,-5V35" stroke-width="0.3" stroke="#ccc" />
+<text x="35" y="8.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">clk</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,10H52M52,10L54,0M54,0H64M64,0L66,10M66,10H76M76,10L78,0M78,0H88M88,0L90,10M90,10H100M100,10L102,0M102,0H112M112,0L114,10M114,10H124M124,10L126,0M126,0H136M136,0L138,10M138,10H148M148,10L150,0M150,0H160" />
+
+<text x="35" y="28.5" text-anchor="end" font-size="10" fill="black" font-family="Helvetica">signal</text>
+<path stroke-linecap="round" stroke-width="0.6" stroke="black" fill="none" d="M42,30H52M52,30H54M54,30H64M64,30H66M66,30H76M76,30L78,20M78,20H88M88,20H90M90,20H100M100,20H102M102,20H112M112,20H114M114,20H124M124,20L126,30M126,30H136M136,30H138M138,30H148M148,30H150M150,30H160" />
+
+</g>
+</svg>

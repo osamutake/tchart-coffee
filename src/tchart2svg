@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+Path = require('path');
+require(Path.join(__dirname,'../lib/tchart2svg.js')).run();

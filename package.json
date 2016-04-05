@@ -16,6 +16,9 @@
     "uglify-js": "*",
     "jasmine-node": "*"
   },
+  "bin": {
+    "tchart2svg": "src/tchart2svg"
+  },
   "author": "Osamu Takeuchi <osamu@big.jp>",
   "license": "MIT"
 }

@@ -14,6 +14,7 @@ task :default => :all
 task :all => [
     :preparation,
     :lib,
+    :cli,
     :editor,
     :doc,
     :test
@@ -50,6 +51,16 @@ file 'lib/tchart.min.js' => 'lib/tchart.js' do |t|
 end
 
 file 'lib/tchart.js' => 'src/tchart.coffee' do |t|
+  src = t.prerequisites[0]
+  out = t.name
+  sh "coffee -cm -o lib #{src}"
+end
+
+# =========================================== :cli
+
+task :cli => 'lib/tchart2svg.js'
+
+file 'lib/tchart2svg.js' => 'src/tchart2svg.coffee' do |t|
   src = t.prerequisites[0]
   out = t.name
   sh "coffee -cm -o lib #{src}"
@@ -149,9 +160,9 @@ end
 
 # =========================================== :test
 
-task :test => 'doc/test-result.html'
+task :test => ['doc/test-result.html', 'tmp/jasmine-tested']
 
-file 'doc/test-result.html' => 'lib/tchart.min.js' do
+file 'doc/test-result.html' => ['lib/tchart.min.js', 'lib/tchart2svg.js'] do
   RED_COLOR="\033[31m"
   GREEN_COLOR="\033[32m"
   RST_COLOR="\033[0m"
@@ -195,9 +206,14 @@ file 'doc/test-result.html' => 'lib/tchart.min.js' do
     puts "If you don't see any problems there, run 'rake test:expectation' to update the expected result.\n#{RST_COLOR}"
     exit 1
   end
-
-  sh 'node_modules/.bin/jasmine-node --coffee spec'
 end
+
+file 'tmp/jasmine-tested' => ['tmp', 'lib/tchart.min.js', 'lib/tchart2svg.js'] + Dir['spec/*_spec.coffee'] do
+  sh 'node_modules/.bin/jasmine-node --coffee spec'
+  sh 'touch tmp/jasmine-tested'
+end
+
+directory 'tmp'
 
 # =========================================== 'test:expectation'
 
