@@ -1,3 +1,8 @@
+#
+# if 'rake' fails due to some dependency issues, 
+# do 'make' to solve them
+#
+
 require 'rake/clean'
 
 uglify = "node_modules/.bin/uglifyjs"
