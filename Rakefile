@@ -161,13 +161,21 @@ end
 # =========================================== :test
 
 task :test => 'doc/test-result.html' do
+  RED = $stdout.isatty ? "\e[31m" : ''
+  RESET = $stdout.isatty ? "\e[0m" : ''
+
+  unless FileTest.executable? 'src/tchart2svg'
+    puts "#{RED}Test failed: src/tchart2svg is not executable#{RESET}"
+    exit(-1)
+  end
+
   result = File.read 'doc/test-result.html'
   unless result =~ /class="success"/
-    puts "Test failed!"
+    puts "#{RED}Test failed!"
     puts ""
     puts "Check result in 'doc/test-result.html'."
     puts "If you don't see any problems there, " +
-         "run 'rake test:expectation' to update the expected result."
+         "run 'rake test:expectation' to update the expected result.#{RESET}"
     exit(-1)
   end
 end

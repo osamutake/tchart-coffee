@@ -80,6 +80,10 @@ describe 'tchart2svg', ->
 
     if errors.length > 0
       message = errors.map((i)->"Difference detected for '#{srcs[i]}'\n").join('')
+      message += "\n" +
+          "Check result in 'doc/test-result.html'.\n" +
+          "If you don't see any problems there, " +
+          "run 'rake test:expectation' to update the expected result."
       throw new Error(message)
 
   for option in ['-o', '--output']
