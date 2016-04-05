@@ -327,6 +327,7 @@ class TimingChart
     #{@svg.join("\n")}
     </g>
     </svg>
+    
     """
 
   processConfiguration: (name, value)->

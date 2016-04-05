@@ -96,7 +96,7 @@ processArgs = ->
 
 
 format = (source)->
-  TimingChart.format(source, options) + "\n"
+  TimingChart.format(source, options)
 
 
 showHelp = ->
