@@ -57,11 +57,29 @@ describe 'tchart2svg', ->
     )
     result = child.stdout.toString().split("</svg>\n").map((s) -> s + "</svg>\n")
 
-    errors = ''
-    for src,i in srcs
-      if result[i] != expectation[i]
-        errors += "Difference detected for '#{src}'\n"
-    expect(errors).toBe('')
+    errors = (i for src, i in srcs when result[i] != expectation[i])
+
+    html = fs.readFileSync('src/doc/test-result.html.src').toString()
+    html = html.replace('<%=result%>',
+      if errors.length == 0
+        "<h1 class=\"success\">Test Passed!</h1>"
+      else
+        "<h1 class=\"fail\">Test Failed!</h1>\n" +
+        "<p>If you don't see any problems below, " +
+        "run 'rake test:expectation' to update the expected result.\n" +
+        errors.map( (i)->
+          title = srcs[i].replace(/\.tchart$/, '')
+          tchart = fs.readFileSync('spec/fixture/' + srcs[i]).toString().replace(/\n/g, "<br>\n")
+          "<h2>#{title}</h2>\n" +
+          "<div class='row'><div>#{tchart}</div>" +
+          "<div>#{expectation[i]}</div><div>#{result[i]}</div></div>\n"
+        ).join('')
+    )
+    fs.writeFileSync 'doc/test-result.html', html
+
+    if errors.length > 0
+      message = errors.map((i)->"Difference detected for '#{srcs[i]}'\n").join('')
+      throw new Error(message)
 
   for option in ['-o', '--output']
     do (option)->
@@ -144,4 +162,3 @@ describe 'tchart2svg', ->
 
     expectation = fs.readFileSync("spec/expectation/#{name} --grid on.svg").toString()
     expect(child.stdout.toString()).toBe(expectation)
-  
