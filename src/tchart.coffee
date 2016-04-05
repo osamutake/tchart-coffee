@@ -1,3 +1,5 @@
+'use strict'
+
 class SvgPath
   constructor: (style)->
     @segments = []

@@ -1,4 +1,5 @@
-'strict'
+'use strict'
+
 spawnSync = require('child_process').spawnSync
 fs = require('fs')
 

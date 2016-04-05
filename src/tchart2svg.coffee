@@ -1,3 +1,5 @@
+'use strict'
+
 Path = require('path')
 fs = require('fs')
 TimingChart = require('./tchart')
